@@ -301,6 +301,8 @@ Error message and password prompt
 
 <li>$:/meta/view/result</li>
 
+<li>$:/meta/view/save</li>
+
 <li>$:/meta/view/study</li>
 
 <li>$:/meta/view/variable</li>
@@ -11256,6 +11258,11 @@ This is a result from the study &lt;$list filter=&quot;[title{!!studyid}]&quot;&
 &lt;/table&gt;
 &lt;/div&gt;</pre>
 </div>
+<div created="20210329002812077" modified="20210329002932753" tags="" title="$:/meta/view/save">
+<pre>&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+''Important'': The changes you make are only visible to you. Click on the red circle with a check mark ({{$:/core/ui/Buttons/save-wiki}}) in the upper left corner of the page to save the file to your computer (including the changes you have made). As long as the circle ({{$:/core/ui/Buttons/save-wiki}}) is red, you have unsaved changes.
+&lt;/div&gt;</pre>
+</div>
 <div created="20210328131833862" modified="20210328164838598" tags="" title="$:/meta/view/study">
 <pre>&lt;div&gt;
 {{||$:/meta/button/editstudy}}
@@ -11768,10 +11775,10 @@ html body.tc-body {
 <div created="20210328164348853" modified="20210328231843102" title="$:/state/searchtab-1444756290">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
-<div created="20210328131853221" modified="20210328234735187" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20210328131853221" modified="20210329002848896" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
-<div created="20210326182328532" modified="20210329002027219" title="$:/state/sidebar">
+<div created="20210326182328532" modified="20210329002707816" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
@@ -11798,7 +11805,7 @@ html body.tc-body {
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Home" title="$:/StoryList">
+<div created="20210329002814619" list="Home" modified="20210329003125582" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -13299,12 +13306,10 @@ div::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
 <div created="20210328223524498" modified="20210328223714245" title="Contribute">
 <pre>The database lives in a single html file that is hosted on GitHub. To add new data, you can add your changes to this file and click the red save-icon to the left. Then fork the [[project on GitHub|https://github.com/andjar/CyPreg]] and upload your modified file. As soon as you're ready, you can send a pull request to have your changes merged with the main database.</pre>
 </div>
-<div created="20210328233635018" modified="20210328235421602" title="Documentation">
+<div created="20210328233635018" modified="20210329002818563" title="Documentation">
 <pre>This database is built on [[TiddlyWiki|https://tiddlywiki.com]]. The [[TiddlyWiki community|https://groups.google.com/g/tiddlywiki]] is active, kind and very helpful.
 
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-''Important'': The changes you make are only visible to you. Click on the red circle with a check marker ({{$:/core/ui/Buttons/save-wiki}}) in the upper left corner of the page to save the file to your computer (with the changes you have made). As long as the circle ({{$:/core/ui/Buttons/save-wiki}}) is red, you have unsaved changes.
-&lt;/div&gt;
+{{$:/meta/view/save}}
 
 In this database, the organizing entity is ''study''. A study can have multiple ''populations''. A population can have multiple ''results''. And a result can have ''measurement'' of multiple ''variables''. Each of these entities have several properties. These properties are defined in templates; for example, the template for //variable// looks like this:
 
@@ -13377,12 +13382,15 @@ Add another variable? {{$:/meta/button/addvariable}}
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" modified="20210329002027201" title="Home">
+<div created="20210328131438059" modified="20210329003120977" title="Home">
 <pre>{{Getting started}}
+
+{{$:/meta/view/save}}
 
 &lt;hr&gt;
 {{$:/meta/button/addstudy}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/clean}}
-
+&lt;hr&gt;
+&lt;$list filter=&quot;[tag[Variable]]&quot;&gt; &lt;$link&gt;{{!!variablename}}&lt;/$link&gt; |&lt;/$list&gt;
 &lt;hr&gt;
 {{$:/meta/view/listdata}}</pre>
 </div>
