@@ -259,6 +259,8 @@ Error message and password prompt
 
 <li>$:/meta/button/addvariable</li>
 
+<li>$:/meta/button/clean</li>
+
 <li>$:/meta/button/copyvariable</li>
 
 <li>$:/meta/button/deletepopulation</li>
@@ -358,6 +360,8 @@ Error message and password prompt
 <li>$:/themes/jd/Mono</li>
 
 <li>$:/themes/jd/Mono/Database</li>
+
+<li>$:/themes/jd/Mono/Stylesheet</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -645,7 +649,47 @@ Error message and password prompt
 
 <li>C94E22BF-FCA0-0001-D35E-142BD3C0121E</li>
 
+<li>C94E260F-3DB0-0001-962A-8A301C40F0B0</li>
+
+<li>C94E2636-25E0-0001-CA31-16A416D33E00</li>
+
+<li>C94E2656-5640-0001-93A2-1296123013D0</li>
+
+<li>C94E2657-5070-0001-895C-79611E4F5B00</li>
+
+<li>C94E2668-8F70-0001-39B4-2233160413C4</li>
+
+<li>C94E2669-D0A0-0001-17EE-49D01F30D440</li>
+
+<li>C94E2675-1480-0001-A4DE-596341091C25</li>
+
+<li>C94E2677-9370-0001-B77B-DB0D13855C80</li>
+
+<li>C94E267F-45D0-0001-2BE0-1A1BBF90F8C0</li>
+
+<li>C94E269D-E910-0001-28D3-49B09C9D3B20</li>
+
+<li>C94E269E-62F0-0001-DB79-D29318141E08</li>
+
+<li>C94E26C4-B340-0001-2969-14FB130011DD</li>
+
+<li>C94E26C6-B4B0-0001-58F3-10001060188D</li>
+
+<li>C94E26D9-0840-0001-E4C8-10A010FA145A</li>
+
+<li>C94E26DA-E780-0001-204A-71801EBA1E01</li>
+
+<li>C94E26F7-5F90-0001-E58A-5EE018311925</li>
+
+<li>C94E26FA-9130-0001-C15D-B9D0FBF81CB2</li>
+
+<li>C94E2712-06F0-0001-1933-17AD14F3A250</li>
+
+<li>C94E2713-36E0-0001-1D28-9D5017A71940</li>
+
 <li>Contribute</li>
+
+<li>Documentation</li>
 
 <li>Edit study</li>
 
@@ -10771,6 +10815,14 @@ Add variable
 &lt;/$button&gt;
 &lt;/$set&gt;</pre>
 </div>
+<div created="20210329001527543" modified="20210329002021293" tags="" title="$:/meta/button/clean">
+<pre>&lt;$button&gt;
+&lt;$action-confirm $message=&quot;Do you wish to delete measurements without value?&quot;&gt;
+&lt;$action-deletetiddler $filter=&quot;[tag[Measurement]!has[variablevalue]]&quot;/&gt;
+Remove empty measurements
+&lt;/$action-confirm&gt;
+&lt;/$button&gt;</pre>
+</div>
 <div created="20210328161225239" modified="20210328161417016" tags="" title="$:/meta/button/copyvariable">
 <pre>&lt;$set name=newid value=&lt;&lt;uuid&gt;&gt; &gt;
 &lt;$button&gt;
@@ -11716,11 +11768,11 @@ html body.tc-body {
 <div created="20210328164348853" modified="20210328231843102" title="$:/state/searchtab-1444756290">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
-<div created="20210328131853221" modified="20210328152332721" title="$:/state/showeditpreview">
-<pre>no</pre>
-</div>
-<div created="20210326182328532" modified="20210328231824884" title="$:/state/sidebar">
+<div created="20210328131853221" modified="20210328234735187" title="$:/state/showeditpreview">
 <pre>yes</pre>
+</div>
+<div created="20210326182328532" modified="20210329002027219" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -11728,7 +11780,7 @@ html body.tc-body {
 <div created="20210326182314603" modified="20210326182315520" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20210328154412392" modified="20210328231338933" title="$:/state/tab--86143343">
+<div created="20210328154412392" modified="20210328235304497" title="$:/state/tab--86143343">
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
 <div created="20210326182316115" modified="20210328154409344" title="$:/state/tab-1749438307">
@@ -11737,16 +11789,16 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210328230349051" title="$:/state/tab/moresidebar-1850697562">
+<div created="20210328141300978" modified="20210328234325843" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20210328134632736" modified="20210328231335472" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210328235256620" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210328231844153" list="C94E0BD9-F900-0001-4613-18501BA11D64" modified="20210328231902103" title="$:/StoryList">
+<div list="Home" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -12001,6 +12053,658 @@ html body.tc-body {
     &quot;day-palette&quot;: &quot;$:/themes/jd/Mono/Palette/SpartanDay&quot;,
     &quot;night-palette&quot;: &quot;$:/themes/jd/Mono/Palette/SpartanNight&quot;,
     &quot;button-fontscroller&quot;: &quot;hide&quot;
+}</pre>
+</div>
+<div created="20210328235315199" creator="jd" modified="20210328235349226" modifier="jd" tags="$:/tags/Stylesheet" title="$:/themes/jd/Mono/Stylesheet">
+<pre>\define bkrpnt() {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}
+\define sidebar() {{$:/themes/tiddlywiki/vanilla/metrics/sidebarwidth}}
+\define fontsize() {{$:/themes/tiddlywiki/vanilla/metrics/fontsize}}
+
+
+
+/* MAIN */
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-sidebar-scrollable {
+    position: fixed;
+    top: {{$:/themes/jd/Mono/Database##header-position-desktop}};
+    left: 0;
+    bottom: 0;
+    right: unset;
+    width: &lt;&lt;sidebar&gt;&gt;;
+    margin: 0;
+    padding: 0 2em 2em 2em;
+}
+.tc-story-river {
+    width: calc(100% - &lt;&lt;sidebar&gt;&gt;);
+    padding: 0 2em 4em 2em;
+}
+&lt;$list filter=&quot;[[$:/view]!text[zoomin]]&quot;&gt;
+.tc-story-river { top: 0.25em; }
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/view]text[zoomin]]&quot;&gt;
+.tc-story-river {
+    top: calc({{$:/themes/jd/Mono/Database##header-position-desktop}} + 0.25em);
+}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/state/sidebar]!text[no]]&quot; variable=&quot;stateCheck&quot;&gt;
+.tc-story-river {
+    left: &lt;&lt;sidebar&gt;&gt;;
+    right: 0;
+}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/state/sidebar]text[no]]&quot; variable=&quot;stateCheck&quot;&gt;
+.tc-story-river {
+    left: calc(&lt;&lt;sidebar&gt;&gt; / 2);
+    right: calc(&lt;&lt;sidebar&gt;&gt; / 2);
+}
+&lt;/$list&gt;
+.tc-tiddler-frame {
+    margin: 0 0 2em 0;
+    width: 100%;
+    border-radius: 1px;
+    &lt;&lt;box-shadow &quot;2px 2px 5px rgba(0, 0, 0, 0.15)&quot;&gt;&gt;
+}
+.tc-storyview-zoomin-tiddler {
+    width: calc(100% - 4em) !important;
+}
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-sidebar-scrollable { padding: 0 1em 2em 1em; }
+.tc-sidebar-header { padding: 0; }
+.tc-tiddler-frame { margin-bottom: 2px !important; }
+}
+
+&lt;$list filter=&quot;[[$:/state/sidebar]!text[no]]&quot; variable=&quot;stateCheck&quot;&gt;
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-story-river { display: none; }
+}
+&lt;/$list&gt;
+
+&lt;$list filter=&quot;[[$:/state/sidebar]text[no]]&quot; variable=&quot;stateCheck&quot;&gt;
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-sidebar-scrollable { padding-top: 0; padding-bottom: 0; }
+}
+&lt;/$list&gt;
+
+&lt;$list filter=&quot;[[$:/themes/tiddlywiki/vanilla/options/stickytitles]text[yes]]&quot; variable=&quot;stateCheck&quot;&gt;
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-tiddler-title {
+    top: calc({{$:/themes/jd/Mono/Database##header-position-desktop}} - .25em);
+}
+}
+
+.tc-titlebar {
+    line-height: 0;
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+&lt;$list filter=&quot;[[$:/state/searchbar]text[show]]&quot;&gt;
+.tc-tiddler-edit-frame .tc-tiddler-title {
+    top: {{$:/themes/jd/Mono/Database##header-position-mobile-yes-searchbar}};
+}
+.tc-tiddler-view-frame .tc-tiddler-title {
+    top: {{$:/themes/jd/Mono/Database##header-position-mobile-yes-searchbar}};
+}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/state/searchbar]!text[show]]&quot;&gt;
+.tc-tiddler-title {
+    top: {{$:/themes/jd/Mono/Database##header-position-mobile-no-searchbar}};
+}
+&lt;/$list&gt;
+}
+&lt;/$list&gt;
+
+.tc-sidebar-scrollable .tc-tab-buttons,
+.tc-topbar .tc-page-controls button,
+.tc-topbar .tc-search button {
+    padding: 0;
+}
+
+/* TOPBAR */
+
+&lt;$list filter=&quot;[[$:/view]!text[zoomin]]&quot;&gt;
+&lt;$list filter=&quot;[[$:/config/topbar/sticky]!text[no]]&quot;&gt;
+.tc-topbar { position: sticky; }
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) { 
+.tc-story-river { margin-top: -2.5em; }
+}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/config/topbar/sticky]text[no]]&quot;&gt;
+.tc-topbar { position: fixed; }
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) { 
+.tc-topbar { height: 56px; }
+.tc-story-river { margin-top: 56px; }
+}
+&lt;$list filter=&quot;[[$:/state/searchbar]!text[hide]]&quot;&gt;
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) { 
+.tc-topbar { height: 94px; }
+.tc-story-river { margin-top: calc(48px + 1em); }
+}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/state/searchbar]text[hide]]&quot;&gt;
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) { 
+.tc-topbar { height: 48px; }
+.tc-story-river { margin-top: 1em; }
+}
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+
+&lt;$list filter=&quot;[[$:/view]text[zoomin]]&quot;&gt;
+.tc-topbar { position: fixed; }
+&lt;/$list&gt;
+
+.tc-topbar {
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25em 1em;
+    background: &lt;&lt;colour page-background&gt;&gt;;
+    z-index: 900;
+}
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-topbar {
+    padding: 1em 2em;
+    max-height: {{$:/themes/jd/Mono/Database##header-position-desktop}};
+}
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-topbar &gt; * {
+    width: 100%;
+}
+.tc-topbar .tc-topbar-left {
+    padding: 0.75em 0;
+}
+.tc-topbar .tc-topbar-right .tc-search {
+    margin-bottom: 0.5em;
+}
+.tc-topbar-right {
+    font-size: 1.25em !important;
+}
+.tc-topbar .tc-page-controls {
+    justify-content: space-between;
+    width: 100%;
+}
+}
+
+.tc-topbar .tc-page-controls,
+.tc-topbar .tc-search {
+    display: flex;
+    align-items: center;
+}
+
+/* TOPBAR SEARCH */
+
+.tc-topbar .tc-search {
+    border: 1px solid &lt;&lt;colour table-border&gt;&gt;;
+    background: &lt;&lt;colour page-background&gt;&gt;;
+    border-radius: 0;
+    padding: 0.25em;
+}
+.tc-topbar .tc-search input {
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+.tc-topbar .tc-search .tc-reveal {
+    display: flex;
+}
+
+/* controls */
+
+.tc-topbar .tc-page-controls {
+    margin: 0;
+}
+.tc-topbar .tc-page-controls button &gt; span,
+.tc-topbar .tc-page-controls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DROPDOWNS */
+
+.tc-drop-down,
+.tc-block-dropdown {
+    &lt;&lt;box-shadow &quot;2px 2px 5px rgba(0, 0, 0, 0.25)&quot;&gt;&gt;
+    border-radius: 1px;
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+
+.tc-search .tc-drop-down,
+.tc-search .tc-block-dropdown,
+.tc-page-controls .tc-drop-down,
+.tc-page-controls .tc-block-dropdown {
+    position:fixed;
+    left:1em;
+    min-width: calc(100% - 2em);
+    max-width: calc(100% - 2em);
+    max-height: calc(100% - 10em);
+    overflow: auto;
+}
+
+.tc-drop-down,
+.tc-block-dropdown {
+    max-height: 22em;
+    overflow: auto;
+    font-size: calc(&lt;&lt;fontsize&gt;&gt;*1.2) !important;
+    font-weight: normal;
+    line-height: 1.2;
+}
+}
+
+/* TOPBAR SEARCH DROPDOWN */
+
+.tc-block-dropdown.tc-search-drop-down {
+    padding: 0.5em;
+}
+
+.tc-block-dropdown.tc-search-drop-down .tc-tab-buttons {
+    margin-bottom: -3px;
+    padding-top: 0;
+}
+
+.tc-block-dropdown.tc-search-drop-down .tc-search-results { width: 100%; }
+
+.tc-block-dropdown.tc-search-drop-down .tc-search { display: none; }
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-block-dropdown.tc-search-drop-down {
+    margin: 0 0 0 -24em;
+    width: calc(100% + 24em);
+    max-height: 42em;
+    overflow: auto;
+}
+.tc-topbar-right .tc-search .tc-block-dropdown,
+.tc-topbar-right .tc-search .tc-drop-down {
+    position: absolute;
+    right: 0;
+}
+.tc-topbar-right .tc-search .tc-drop-down {
+    padding: 1em;
+    min-width: 10em;
+    max-width: 10em;
+}
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.tc-block-dropdown.tc-search-drop-down {
+    margin: 0;
+    width: 100%;
+    overflow: auto;
+}
+}
+
+/* TOPBAR SEARCH DROPDOWN FLEX */
+
+/* .tc-block-dropdown.tc-search-drop-down { display: flex; } on searchbar template under reveal */
+
+.tc-block-dropdown.tc-search-drop-down &gt; p {
+    display: flex;
+    margin: 0;
+    width: 100%;
+}
+
+.tc-block-dropdown.tc-search-drop-down &gt; p &gt;.tc-tab-set {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tc-block-dropdown.tc-search-drop-down &gt; p &gt;.tc-tab-set &gt; .tc-tab-content {
+    display: flex;
+    flex: 1 1 auto;
+    overflow: auto;
+    margin-top: 0;
+}
+
+
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/styled-frames&quot; text=&quot;yes&quot; default=&quot;yes&quot;&gt;
+
+/* VIEW &amp; EDIT FRAME */
+
+.tc-subtitle,
+.tc-tiddler-edit-frame input.tc-titlebar.tc-edit-texteditor,
+.tc-tiddler-view-frame .tc-titlebar h2.tc-title {
+    font-family: monospace;
+}
+
+/* VIEW FRAME */
+
+.tc-tiddler-view-frame .tc-title {
+    font-weight: bold;
+}
+
+.tc-tiddler-view-frame .tc-tiddler-title {
+    font-size: 1.5em;
+    margin: 0 -1em;
+    padding: 0.25em 1em;
+}
+
+.tc-tiddler-view-frame .tc-titlebar {
+    font-size: 1em;
+}
+
+.tc-tiddler-view-frame .tc-titlebar h2.tc-title {
+    font-size: 0.75em;
+}
+
+.tc-tiddler-view-frame .tc-tiddler-controls {
+    font-size: 1.5em;
+}
+
+.tc-tiddler-view-frame .tc-tiddler-controls,
+.tc-tiddler-view-frame .tc-tiddler-controls &gt; span &gt; button, 
+.tc-tiddler-view-frame .tc-tiddler-controls &gt; span &gt; span &gt; button, 
+.tc-tiddler-view-frame .tc-tiddler-controls &gt; span &gt; span &gt; span &gt; button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tc-tiddler-view-frame .tc-tiddler-title-icon svg {
+    max-height: 0.65em;
+}
+
+/* EDIT FRAME */
+
+.tc-tiddler-edit-frame .tc-tiddler-edit-title {
+    color: transparent;
+    line-height: 0;
+}
+
+.tc-tiddler-edit-frame input.tc-titlebar.tc-edit-texteditor {
+    font-size: 1.2em; 
+}
+
+.tc-tiddler-edit-frame .tc-message-box { margin: 0; }
+
+.tc-tiddler-edit-frame iframe.tc-edit-texteditor { margin-top: 0 !important; }
+
+.tc-tiddler-edit-frame .tc-editor-toolbar { background: &lt;&lt;colour tiddler-editor-border&gt;&gt;; }
+
+.tc-tiddler-edit-frame .tc-editor-toolbar .tc-btn-invisible  { background: transparent; }
+
+.tc-tiddler-edit-frame .tc-editor-toolbar .tc-btn-invisible {
+    transition: 200ms fill;
+    fill: &lt;&lt;colour foreground&gt;&gt;;
+}
+
+.tc-tiddler-edit-frame .tc-editor-toolbar .tc-btn-invisible:hover {
+    background: transparent;
+    fill: &lt;&lt;colour primary&gt;&gt;;
+}
+
+input::placeholder {
+   font-size: 0.9em; 
+}
+
+.tc-tiddler-edit-frame input.tc-titlebar.tc-edit-texteditor, 
+.tc-tiddler-edit-frame .tc-edit-tags, 
+.tc-tiddler-edit-frame .tc-edit-field-add-name input.tc-edit-texteditor, 
+.tc-tiddler-edit-frame .tc-edit-field-add-value input.tc-edit-texteditor, 
+.tc-tiddler-edit-frame input.tc-edit-typeeditor.tc-popup-handle, 
+.tc-tiddler-edit-frame input.tc-edit-texteditor.tc-popup-handle {
+    border: 1px solid &lt;&lt;colour background&gt;&gt;; 
+    border-bottom: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;
+    &lt;&lt;box-shadow &quot;none&quot;&gt;&gt;
+} 
+
+.tc-tiddler-edit-frame textarea { 
+    border: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;
+    &lt;&lt;box-shadow &quot;none&quot;&gt;&gt;
+} 
+
+.tc-tiddler-edit-frame textarea,
+.tc-tiddler-edit-frame iframe.tc-edit-texteditor {
+    font-size: {{$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize}};
+    border: 1px solid &lt;&lt;colour background&gt;&gt;; 
+    &lt;&lt;box-shadow &quot;none&quot;&gt;&gt;
+}
+
+.tc-tiddler-edit-frame input.tc-titlebar.tc-edit-texteditor {
+    font-weight: bold;
+}
+
+.tc-tiddler-edit-frame .tc-type-selector {
+    padding-bottom: 10px;
+    border-bottom: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;
+}
+
+&lt;/$reveal&gt;
+
+
+/* TIMELINE */
+
+.jd-timeline-wrapper {
+    position: relative;
+}
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.jd-timeline-wrapper {
+    padding: 0 1em;
+    width: 100%;
+}
+}
+ .jd-paperview-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.25em 0;
+}
+.jd-paperview {
+    position:relative;
+    width: 31%;
+    margin: 1%;
+    overflow:hidden;
+    border: 0.5px solid {{$:/themes/jd/Mono/Database##grid-item-border}};
+    border-radius: 1px;
+    &lt;&lt;box-shadow &quot;2px 2px 5px rgba(0, 0, 0, 0.09)&quot;&gt;&gt;
+    text-align: left;
+}
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.jd-paperview { height: 26em; }
+}
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.jd-paperview { height: 12em; }
+}
+.jd-paperview,
+.jd-paperview-end {
+    background: {{$:/themes/jd/Mono/Database##grid-item-background}} !important;
+}
+.jd-paperview-end {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 5px;
+}
+.jd-paperview-internal {
+    transform: scale(0.7);
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    top: -5%;
+    left: -5%;
+    pointer-events: none;
+}
+.jd-paperview-wrapper .tc-menu-list-subitem { width: 100%; }
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.jd-paperview-end {
+    box-shadow: 0 0 10px 10px {{$:/themes/jd/Mono/Database##grid-item-background}};
+}
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.jd-paperview-end {
+    box-shadow: 0 0 5px 5px {{$:/themes/jd/Mono/Database##grid-item-background}};
+}
+
+}
+.jd-paperview-date {
+    padding: 0.1em 0;
+}
+.jd-paperview-date {
+    position: sticky;
+    z-index: 1;
+    background: {{$:/themes/jd/Mono/Database##header-background}};
+    box-shadow: 0 0 2px 2px {{$:/themes/jd/Mono/Database##header-background}};
+}
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.jd-paperview-date {
+    top: {{$:/themes/jd/Mono/Database##header-position-desktop}};
+}
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+&lt;$list filter=&quot;[[$:/state/searchbar]text[show]]&quot;&gt;
+.jd-paperview-date {
+    top: {{$:/themes/jd/Mono/Database##header-position-mobile-yes-searchbar}};
+}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/state/searchbar]!text[show]]&quot;&gt;
+.jd-paperview-date {
+    top: {{$:/themes/jd/Mono/Database##header-position-mobile-no-searchbar}};
+}
+&lt;/$list&gt;
+}
+
+
+/* MISC */
+
+hr {
+    border: none;
+    border-top: 1px solid &lt;&lt;colour table-border&gt;&gt;;
+    height: 1px;
+}
+
+.tc-sidebar-scrollable .tc-tab-buttons,
+.tc-tiddler-frame .tc-tab-buttons {
+    margin-bottom: -3px;
+}
+
+.tc-story-river .tc-tab-buttons.tc-vertical button {
+    border-top: 1px solid &lt;&lt;colour tab-border&gt;&gt;;
+    border-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;
+    border-bottom: 1px solid &lt;&lt;colour tab-border&gt;&gt;;
+    border-right: 1px solid transparent;
+}
+
+.tc-story-river .tc-tab-buttons.tc-vertical .tc-tab-selected {
+    border-top: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;
+    border-left: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;
+    border-bottom: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;
+    border-right: 1px solid transparent;
+}
+
+.tc-sidebar-lists .tc-tab-set .tc-tab-divider {
+    border-top: none;
+    height: 1px;
+    background-image: linear-gradient(left, &lt;&lt;colour sidebar-tab-divider&gt;&gt; 20%, transparent 100%);
+    background-image: -o-linear-gradient(left, &lt;&lt;colour sidebar-tab-divider&gt;&gt; 20%, transparent 100%);
+    background-image: -moz-linear-gradient(left, &lt;&lt;colour sidebar-tab-divider&gt;&gt; 20%, transparent 100%);
+    background-image: -webkit-linear-gradient(left, &lt;&lt;colour sidebar-tab-divider&gt;&gt; 20%, transparent 100%);
+    background-image: -ms-linear-gradient(left, &lt;&lt;colour sidebar-tab-divider&gt;&gt; 20%, transparent 100%);
+}
+
+/* SIDEBAR MORE TAB BUTTONS */
+
+.tc-more-sidebar .tc-tab-buttons.tc-vertical {
+    margin-top: 1em;
+}
+
+.tc-more-sidebar .tc-tab-buttons.tc-vertical &gt; button {
+    margin-bottom: -1px;
+    border-top: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;
+    border-left: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;
+}
+
+.tc-more-sidebar .tc-tab-buttons.tc-vertical &gt; button.tc-tab-selected {
+    border-top: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;
+    border-left: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;
+}
+
+.tc-more-sidebar .tc-tab-content.tc-vertical {
+    margin-left: 1px;
+}
+
+ul, li {
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+}
+
+.tc-menu-list-item {
+    padding-left: 5px;
+    text-indent: -5px;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    -webkit-word-break: break-all !important;
+    -moz-word-break: break-all !important;
+    -ms-word-break: break-all !important;
+    -o-word-break: break-all !important;
+    word-break: break-all !important;
+}
+
+button, input { outline: none; }
+
+button, input:not([type]) {
+    border-radius: 2px;
+}
+
+input:not([type]) {
+    border: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;
+    padding: 2px 4px;
+    margin: 2px;
+}
+
+button {
+    border: 1px solid &lt;&lt;colour button-border&gt;&gt;;
+    padding: 6px 16px;
+    margin: 2px;
+}
+
+@media (max-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.desktop-only {
+    display: none !important; pointer-events: none;
+}
+}
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+.mobile-only {
+    display: none !important; pointer-events: none;
+}
+}
+
+.tc-topbar.tc-topbar-left,
+.tc-topbar.tc-topbar-right {
+    display: none; pointer-events: none;
+}
+
+.tc-dropzone &gt; p,
+.tc-topbar p,
+.tc-sidebar-lists-template &gt; p,
+.tc-topbar .tc-sidebar-lists &gt; p { margin: 0; }
+
+@media (min-width: &lt;&lt;bkrpnt&gt;&gt;) {
+div::-webkit-scrollbar { background: rgba(0, 0, 0, 0.12); }
+div::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
+}
+
+.tc-notification {
+    &lt;&lt;box-shadow &quot;2px 2px 5px rgba(0, 0, 0, 0.45)&quot;&gt;&gt;
+    border-radius: 1px;
 }</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12535,8 +13239,97 @@ html body.tc-body {
 <div created="20210328225727466" modified="20210328230259556" populationid="C94E0C51-10C0-0001-619F-1E4213401F5E" resultid="C94E22BC-57B0-0001-A8D0-E440B4A0F860" studyid="C94E0C08-6030-0001-E261-10708EDA1D3B" tags="Measurement" title="C94E22BF-FCA0-0001-D35E-142BD3C0121E" type="text/vnd.tiddlywiki" variableid="C94E0C00-B7F0-0001-AC92-1AB014F0A800" variablemeasure="Median; 25.-75. percentile" variablename="IP-10" variableuncertainty="687; 1554" variableunit="pg/mL" variablevalue="1017">
 <pre>{{||$:/meta/view/measurement}}</pre>
 </div>
+<div created="20210328235715634" modified="20210328235757170" studyauthor="J.P. Xiao" studydoi="10.1016/j.cyto.2012.07.039" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" studytitle="The increased maternal serum levels of IL-6 are associated with the severity and onset of preeclampsia" studyyear="2012" tags="Study" title="C94E260F-3DB0-0001-962A-8A301C40F0B0" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/study}}</pre>
+</div>
+<div created="20210328235817702" modified="20210329000009013" populationage="26 (19–38)" populationbirthlength="" populationbirthweight="" populationbmi="" populationcomment="" populationcondition="Normal" populationdiastolic="76.5 (60–90)" populationfemale="" populationga="36+3 (28-42+1)" populationgadelivery="" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" populationmap="" populationname="Healthy pregnant women" populationplacentaweight="" populationprimipara="" populationsize="75" populationsmoking="" populationsystolic="120 (90–138)" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Population" title="C94E2636-25E0-0001-CA31-16A416D33E00" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/population}}</pre>
+</div>
+<div created="20210329000013041" modified="20210329000123647" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" resultcomment="All healthy women" resultcondition="Normal" resultga="36+3" resultgaspread="(28–42+1)" resultid="C94E2656-5640-0001-93A2-1296123013D0" resultn="75" resultname="Healthy pregnant women" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E2656-5640-0001-93A2-1296123013D0" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329000013031" modified="20210329000104913" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" resultid="C94E2656-5640-0001-93A2-1296123013D0" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E2657-5070-0001-895C-79611E4F5B00" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="0.605; 65.7" variableunit="pg/mL" variablevalue="10.90">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329000128815" modified="20210329000159856" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" resultcomment="Subsample" resultcondition="Normal" resultga="&lt;32" resultgaspread="" resultid="C94E2668-8F70-0001-39B4-2233160413C4" resultn="30" resultname="&lt;=32 weeks of gestation" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E2668-8F70-0001-39B4-2233160413C4" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329000128810" modified="20210329000214937" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" resultid="C94E2668-8F70-0001-39B4-2233160413C4" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E2669-D0A0-0001-17EE-49D01F30D440" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="0.605; 31.7" variableunit="pg/mL" variablevalue="9.86">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329000225183" modified="20210329000242475" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" resultcomment="Subsample" resultcondition="Normal" resultga="32-40" resultgaspread="" resultid="C94E2675-1480-0001-A4DE-596341091C25" resultn="45" resultname="32–40 weeks of gestation" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E2675-1480-0001-A4DE-596341091C25" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329000225175" modified="20210329000256681" populationid="C94E2636-25E0-0001-CA31-16A416D33E00" resultid="C94E2675-1480-0001-A4DE-596341091C25" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E2677-9370-0001-B77B-DB0D13855C80" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="1.412; 65.7" variableunit="pg/mL" variablevalue="10.9">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329000320295" modified="20210329000502175" populationage="30 (18–40)" populationbirthlength="" populationbirthweight="" populationbmi="" populationcomment="" populationcondition="Preeclampsia" populationdiastolic="108 (77–140)" populationfemale="" populationga="33+5 (22+6–39+1)" populationgadelivery="" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" populationmap="" populationname="Preeclampsia group" populationplacentaweight="" populationprimipara="" populationsize="104" populationsmoking="" populationsystolic="157 (129–186)" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Population" title="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/population}}</pre>
+</div>
+<div created="20210329000504156" modified="20210329000741053" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultcomment="Subsample" resultcondition="Preeclampsia [[Early-onset preeclampsia]]" resultga="28.759" resultgaspread="" resultid="C94E269D-E910-0001-28D3-49B09C9D3B20" resultn="38" resultname="Early onset preeclampsia" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E269D-E910-0001-28D3-49B09C9D3B20" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329000504143" modified="20210329000609774" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E269D-E910-0001-28D3-49B09C9D3B20" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E269E-62F0-0001-DB79-D29318141E08" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="2.99; 249.1" variableunit="pg/mL" variablevalue="11.76">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329000749300" modified="20210329000845414" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultcomment="" resultcondition="Preeclampsia" resultga="33.7" resultgaspread="(22+6–39+1)" resultid="C94E26C4-B340-0001-2969-14FB130011DD" resultn="104" resultname="Preeclampsia" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E26C4-B340-0001-2969-14FB130011DD" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329000749291" modified="20210329000904329" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E26C4-B340-0001-2969-14FB130011DD" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E26C6-B4B0-0001-58F3-10001060188D" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="2.76; 267.4" variableunit="pg/mL" variablevalue="11.81">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329000912033" modified="20210329001108616" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultcomment="Subsample" resultcondition="Preeclampsia [[Late-onset preeclampsia]]" resultga="36.476" resultgaspread="" resultid="C94E26D9-0840-0001-E4C8-10A010FA145A" resultn="66" resultname="Late onset preeclampsia" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E26D9-0840-0001-E4C8-10A010FA145A" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329000912024" modified="20210329000936613" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E26D9-0840-0001-E4C8-10A010FA145A" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E26DA-E780-0001-204A-71801EBA1E01" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="2.76; 267.4" variableunit="pg/mL" variablevalue="12.22">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329001121724" modified="20210329001257790" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultcomment="Subsample" resultcondition="Preeclampsia [[Severe preeclampsia]]" resultga="32.21" resultgaspread="" resultid="C94E26F7-5F90-0001-E58A-5EE018311925" resultn="52" resultname="Severe preeclampsia" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E26F7-5F90-0001-E58A-5EE018311925" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329001121715" modified="20210329001152378" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E26F7-5F90-0001-E58A-5EE018311925" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E26FA-9130-0001-C15D-B9D0FBF81CB2" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="2.76; 249.1" variableunit="pg/mL" variablevalue="17.46">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210329001302681" modified="20210329001409392" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultcomment="Subsample" resultcondition="[[Mild preeclampsia]] Preeclampsia" resultga="35.1" resultgaspread="" resultid="C94E2712-06F0-0001-1933-17AD14F3A250" resultn="52" resultname="Mild preeclampsia" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Result" title="C94E2712-06F0-0001-1933-17AD14F3A250" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210329001302670" modified="20210329001332988" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E2712-06F0-0001-1933-17AD14F3A250" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E2713-36E0-0001-1D28-9D5017A71940" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="2.99; 267.4" variableunit="pg/mL" variablevalue="10.26">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
 <div created="20210328223524498" modified="20210328223714245" title="Contribute">
 <pre>The database lives in a single html file that is hosted on GitHub. To add new data, you can add your changes to this file and click the red save-icon to the left. Then fork the [[project on GitHub|https://github.com/andjar/CyPreg]] and upload your modified file. As soon as you're ready, you can send a pull request to have your changes merged with the main database.</pre>
+</div>
+<div created="20210328233635018" modified="20210328235421602" title="Documentation">
+<pre>This database is built on [[TiddlyWiki|https://tiddlywiki.com]]. The [[TiddlyWiki community|https://groups.google.com/g/tiddlywiki]] is active, kind and very helpful.
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+''Important'': The changes you make are only visible to you. Click on the red circle with a check marker ({{$:/core/ui/Buttons/save-wiki}}) in the upper left corner of the page to save the file to your computer (with the changes you have made). As long as the circle ({{$:/core/ui/Buttons/save-wiki}}) is red, you have unsaved changes.
+&lt;/div&gt;
+
+In this database, the organizing entity is ''study''. A study can have multiple ''populations''. A population can have multiple ''results''. And a result can have ''measurement'' of multiple ''variables''. Each of these entities have several properties. These properties are defined in templates; for example, the template for //variable// looks like this:
+
+{{$:/meta/template/variable}}
+
+The left part (before &quot;:&quot;) is the property name whereas the right part (after &quot;:&quot;) is just a more readable description. You can edit the templates by clicking on the link and then click on the pen in the upper right corner:
+
+* [[Study|$:/meta/template/study]]
+* [[Population|$:/meta/template/population]]
+* [[Result|$:/meta/template/result]]
+* [[Variable|$:/meta/template/variable]]
+
+If you want to add a new property, you need to do two things:
+
+# Add the property to the list, and
+# Add the property as a field
+
+For example, if you want to add //temperature// as a property of your results, you open the [[Result template|$:/meta/template/result]], click on the pen and
+
+# Add `resulttemperature: Temperature (degrees celsius)` to the list, and
+# Add `resulttemperature` as field name in the `Add new field:` box below, and click on `add`
+
+And you need to save your change by clicking on the check marker in the upper right corner.
+
+The measured variables you record are managed from the [[Edit variable]] page. When you add a variable, it will automatically show up when you add a new result to a population. The properties set in [[Edit variable]] are acting as defaults. If you change them when adding a new result, the change is only associated with that specific result.</pre>
 </div>
 <div created="20210328141809599" modified="20210328150752035" tags="" title="Edit study">
 <pre>&lt;$list filter=&quot;[title{Home!!currentid}]&quot;&gt;
@@ -12581,14 +13374,14 @@ Add another variable? {{$:/meta/button/addvariable}}
 <div created="20210328223849417" modified="20210328223942843" title="Export data">
 <pre>Coming soon... In the mean time, you can find a table with all data here: [[$:/meta/view/listlong]]</pre>
 </div>
-<div created="20210328223010106" modified="20210328224935469" title="Getting started">
-<pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute.</pre>
+<div created="20210328223010106" modified="20210328233629807" title="Getting started">
+<pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" modified="20210328231824855" title="Home">
+<div created="20210328131438059" modified="20210329002027201" title="Home">
 <pre>{{Getting started}}
 
 &lt;hr&gt;
-{{$:/meta/button/addstudy}} | [[Edit variable]] | [[Export data]]
+{{$:/meta/button/addstudy}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/clean}}
 
 &lt;hr&gt;
 {{$:/meta/view/listdata}}</pre>
