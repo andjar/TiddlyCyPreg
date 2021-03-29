@@ -277,6 +277,10 @@ Error message and password prompt
 
 <li>$:/meta/button/editvariable</li>
 
+<li>$:/meta/button/export/csv</li>
+
+<li>$:/meta/button/export/json</li>
+
 <li>$:/meta/edit/population</li>
 
 <li>$:/meta/edit/result</li>
@@ -716,6 +720,8 @@ Error message and password prompt
 <li>Getting started</li>
 
 <li>Home</li>
+
+<li>Import to R</li>
 
 </ul>
 </p>
@@ -10906,6 +10912,30 @@ Edit study
 Edit
 &lt;/$button&gt;</pre>
 </div>
+<div created="20210329130013507" modified="20210329130049328" tags="" title="$:/meta/button/export/csv">
+<pre>\define export-to-csv(fileName:&quot;export.csv&quot;)
+&lt;$button tooltip=&quot;&quot;&quot;Export data to &quot;$fileName$&quot; &quot;&quot;&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
+$param=&quot;$:/core/templates/exporters/CsvFile&quot;
+exportFilter=&quot;&quot;&quot;[tag[Study]] [tag[Population]] [tag[Result]] [tag[Measurement]] [tag[Variable]] [tag[Statistic]]&quot;&quot;&quot; filename=&quot;&quot;&quot;$fileName$&quot;&quot;&quot;/&gt;
+{{$:/core/images/export-button}} (&lt;$count filter=&quot;[tag[Study]] [tag[Population]] [tag[Result]] [tag[Measurement]] [tag[Variable]] [tag[Statistic]]&quot;/&gt;)
+&lt;/$button&gt;
+\end
+
+Export as CSV: &lt;&lt;export-to-csv&gt;&gt;</pre>
+</div>
+<div created="20210329125740466" modified="20210329130010251" tags="" title="$:/meta/button/export/json">
+<pre>\define export-to-json(fileName:&quot;export.json&quot;)
+&lt;$button tooltip=&quot;&quot;&quot;Export data to &quot;$fileName$&quot; &quot;&quot;&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
+$param=&quot;$:/core/templates/exporters/JsonFile&quot;
+exportFilter=&quot;&quot;&quot;[tag[Study]] [tag[Population]] [tag[Result]] [tag[Measurement]] [tag[Variable]] [tag[Statistic]]&quot;&quot;&quot; filename=&quot;&quot;&quot;$fileName$&quot;&quot;&quot;/&gt;
+{{$:/core/images/export-button}} (&lt;$count filter=&quot;[tag[Study]] [tag[Population]] [tag[Result]] [tag[Measurement]] [tag[Variable]] [tag[Statistic]]&quot;/&gt;)
+&lt;/$button&gt;
+\end
+
+Export as json: &lt;&lt;export-to-json&gt;&gt;</pre>
+</div>
 <div created="20210328142404611" modified="20210328155315617" tags="" title="$:/meta/edit/population">
 <pre>&lt;div style=&quot;float:right;&quot;&gt;{{||$:/meta/button/deletepopulation}}&lt;/div&gt;
 &lt;div class=&quot;tc-edit-fields&quot;&gt;
@@ -11915,8 +11945,8 @@ html body.tc-body {
 <div created="20210328131853221" modified="20210329002848896" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210326182328532" modified="20210329120329007" title="$:/state/sidebar">
-<pre>no</pre>
+<div created="20210326182328532" modified="20210329125603084" title="$:/state/sidebar">
+<pre>yes</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -11933,16 +11963,16 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210329115156862" title="$:/state/tab/moresidebar-1850697562">
+<div created="20210328141300978" modified="20210329125605153" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210328134632736" modified="20210329120328304" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210329125739096" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Home" title="$:/StoryList">
+<div created="20210329125609170" list="[[Import to R]] Home" modified="20210329130116643" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -13520,23 +13550,51 @@ Add another variable? {{$:/meta/button/addvariable}}
 &lt;/tbody&gt;
 &lt;/table&gt;</pre>
 </div>
-<div created="20210328223849417" modified="20210328223942843" title="Export data">
-<pre>Coming soon... In the mean time, you can find a table with all data here: [[$:/meta/view/listlong]]</pre>
+<div created="20210328223849417" modified="20210329133941830" title="Export data">
+<pre>{{$:/meta/button/export/csv}} or {{$:/meta/button/export/json}}
+
+If you chose the CSV option ({{$:/meta/button/export/csv}}), you can use this R code to import the data:
+
+{{Import to R}}
+
+Using
+
+```R
+ggplotly(ggplot(df, aes(variablename, variablevalue, shape = studytitle, color = resultname)) + 
+           geom_point() + theme_bw() + scale_y_log10()) %&gt;%  
+  layout(legend = list(orientation = &quot;h&quot;, x = 0.4, y = -0.2))
+```
+then produce [[this|https://andjar.github.io/CyPreg/plotly.html]] plot.
+
+You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 </div>
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" currentid="C94E0C08-6030-0001-E261-10708EDA1D3B" modified="20210329115040037" title="Home">
+<div created="20210328131438059" modified="20210329130255813" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
 
 &lt;hr&gt;
-{{$:/meta/button/addstudy}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/clean}}
+{{$:/meta/button/addstudy}} | {{$:/meta/button/clean}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/export/csv}}
 &lt;hr&gt;
 &lt;$list filter=&quot;[tag[Variable]]&quot;&gt; &lt;$link&gt;{{!!variablename}}&lt;/$link&gt; |&lt;/$list&gt;
 &lt;hr&gt;
 {{$:/meta/view/listdata}}</pre>
+</div>
+<div created="20210329130341850" modified="20210329133648169" tags="" title="Import to R">
+<pre>```R
+df_raw &lt;- read.csv(file=&quot;export.csv&quot;)
+df_raw &lt;- split(df_raw, df_raw$tags)
+df_raw &lt;- lapply(df_raw, function(x){
+  x[is.na(x)] &lt;- &quot;&quot;
+  x[, colSums(x != &quot;&quot;) != 0]
+})
+
+df &lt;- merge(df_raw[[&quot;Measurement&quot;]], merge(df_raw[[&quot;Result&quot;]], merge(df_raw[[&quot;Population&quot;]], df_raw[[&quot;Study&quot;]], by.x = &quot;studyid&quot;, by.y = &quot;title&quot;), by.x = &quot;populationid&quot;, by.y=&quot;title&quot;), by.x = &quot;resultid&quot;, by.y = &quot;title&quot;)
+df &lt;- df[,!duplicated(colnames(df))]
+```</pre>
 </div>
 
 
