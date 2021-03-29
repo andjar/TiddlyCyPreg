@@ -281,6 +281,8 @@ Error message and password prompt
 
 <li>$:/meta/button/export/json</li>
 
+<li>$:/meta/button/studyasjson</li>
+
 <li>$:/meta/edit/population</li>
 
 <li>$:/meta/edit/result</li>
@@ -304,6 +306,8 @@ Error message and password prompt
 <li>$:/meta/template/variable</li>
 
 <li>$:/meta/view/addstat</li>
+
+<li>$:/meta/view/json</li>
 
 <li>$:/meta/view/listdata</li>
 
@@ -10936,6 +10940,13 @@ exportFilter=&quot;&quot;&quot;[tag[Study]] [tag[Population]] [tag[Result]] [tag
 
 Export as json: &lt;&lt;export-to-json&gt;&gt;</pre>
 </div>
+<div created="20210329233054079" modified="20210329234317865" tags="" title="$:/meta/button/studyasjson">
+<pre>&lt;$wikify name=json text=&lt;&lt;studyasjson&gt;&gt; &gt;
+&lt;$button message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;json&gt;&gt; &gt;
+Copy study as json
+&lt;/$button&gt;
+&lt;/$wikify&gt;</pre>
+</div>
 <div created="20210328142404611" modified="20210328155315617" tags="" title="$:/meta/edit/population">
 <pre>&lt;div style=&quot;float:right;&quot;&gt;{{||$:/meta/button/deletepopulation}}&lt;/div&gt;
 &lt;div class=&quot;tc-edit-fields&quot;&gt;
@@ -11232,17 +11243,133 @@ variablevalue: Value</pre>
 <div created="20210329114727205" modified="20210329115128559" tags="" title="$:/meta/view/addstat">
 <pre>{{||$:/meta/button/addstatistics}}&lt;$list filter=&quot;[contains:statmeasurements{!!title}]&quot;&gt;, &lt;$link&gt;r&lt;/$link&gt;&lt;/$list&gt;</pre>
 </div>
-<div created="20210328150903410" modified="20210328223221219" tags="" title="$:/meta/view/listdata">
+<div created="20210329215711900" modified="20210329234213399" tags="$:/tags/Macro" title="$:/meta/view/json">
+<pre>\define printtiddler(tiddlertitle)
+&lt;$list filter=&quot;[title[$tiddlertitle$]fields[]butlast[]]&quot; variable=&quot;fname&quot;&gt;
+&lt;$list filter=&quot;[&lt;fname&gt;jsonstringify[]]&quot;&gt;&quot;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&quot;&lt;/$list&gt;:&quot;&lt;$list filter=&quot;[title[$tiddlertitle$]get&lt;fname&gt;jsonstringify[]]&quot;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;&quot;,&lt;br/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[title[$tiddlertitle$]fields[]last[]]&quot; variable=&quot;fname&quot;&gt;
+&lt;$list filter=&quot;[&lt;fname&gt;jsonstringify[]]&quot;&gt;&quot;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&quot;&lt;/$list&gt;:&quot;&lt;$list filter=&quot;[title[$tiddlertitle$]get&lt;fname&gt;jsonstringify[]]&quot;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;&quot;
+&lt;/$list&gt;
+\end
+
+\define studyasjson()
+{&lt;br/&gt;
+&lt;div style=&quot;padding-left: 2em&quot;&gt;
+  &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+  &quot;populations&quot;: [
+    &lt;div style=&quot;padding-left: 2em&quot;&gt;
+      &lt;$list filter=&quot;[tag[Population]studyid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+      {&lt;br/&gt;
+      &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+      &quot;results&quot;: [
+      &lt;div style=&quot;padding-left: 2em&quot;&gt;
+        &lt;$list filter=&quot;[tag[Result]populationid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+        {&lt;br/&gt;
+        &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+        &quot;measurement&quot;: [
+          &lt;div style=&quot;padding-left: 2em&quot;&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            },&lt;br/&gt;
+            &lt;/$list&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;last[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            }
+            &lt;/$list&gt;
+          &lt;/div&gt;
+        ]&lt;br/&gt;
+        },&lt;br/&gt;
+        &lt;/$list&gt;
+        &lt;$list filter=&quot;[tag[Result]populationid&lt;currentTiddler&gt;last[]]&quot;&gt;
+        {&lt;br/&gt;
+        &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+        &quot;measurement&quot;: [
+          &lt;div style=&quot;padding-left: 2em&quot;&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            },&lt;br/&gt;
+            &lt;/$list&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;last[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            }
+            &lt;/$list&gt;
+          &lt;/div&gt;
+        ]&lt;br/&gt;
+        }&lt;br/&gt;
+        &lt;/$list&gt;
+      &lt;/div&gt;
+      ]&lt;br/&gt;
+      },&lt;br/&gt;
+      &lt;/$list&gt;
+      &lt;$list filter=&quot;[tag[Population]studyid&lt;currentTiddler&gt;last[]]&quot;&gt;
+      {&lt;br/&gt;
+      &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+      &quot;results&quot;: [
+      &lt;div style=&quot;padding-left: 2em&quot;&gt;
+        &lt;$list filter=&quot;[tag[Result]populationid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+        {&lt;br/&gt;
+        &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+        &quot;measurement&quot;: [
+          &lt;div style=&quot;padding-left: 2em&quot;&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            },&lt;br/&gt;
+            &lt;/$list&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;last[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            }
+            &lt;/$list&gt;
+          &lt;/div&gt;
+        ]&lt;br/&gt;
+        },&lt;br/&gt;
+        &lt;/$list&gt;
+        &lt;$list filter=&quot;[tag[Result]populationid&lt;currentTiddler&gt;last[]]&quot;&gt;
+        {&lt;br/&gt;
+        &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;,&lt;br/&gt;
+        &quot;measurement&quot;: [
+          &lt;div style=&quot;padding-left: 2em&quot;&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;butlast[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            },&lt;br/&gt;
+            &lt;/$list&gt;
+            &lt;$list filter=&quot;[tag[Measurement]resultid&lt;currentTiddler&gt;last[]]&quot;&gt;
+            {&lt;br/&gt;
+              &lt;$macrocall $name=&quot;printtiddler&quot; tiddlertitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+            }
+            &lt;/$list&gt;
+          &lt;/div&gt;
+        ]&lt;br/&gt;
+        }&lt;br/&gt;
+        &lt;/$list&gt;
+      &lt;/div&gt;
+      ]&lt;br/&gt;
+      }&lt;br/&gt;
+      &lt;/$list&gt;
+    &lt;/div&gt;
+  ]&lt;br/&gt;
+&lt;/div&gt;
+}
+\end</pre>
+</div>
+<div created="20210328150903410" modified="20210329235010356" tags="" title="$:/meta/view/listdata">
 <pre>\define getDOI() https://doi.org/$(doi)$
 
 &lt;table class=&quot;table table-hover&quot;&gt;
 &lt;tbody&gt;
 &lt;$list filter=&quot;[tag[Study]]&quot;&gt;
-&lt;tr&gt;&lt;th&gt;{{!!studyauthor}} ({{!!studyyear}}, &lt;$set name=doi value={{!!studydoi}}&gt;&lt;a href=&lt;&lt;getDOI&gt;&gt; &gt;DOI&lt;/a&gt;&lt;/$set&gt;):&lt;/th&gt;&lt;th&gt;&lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;&lt;/th&gt;
+&lt;tr&gt;&lt;th&gt;{{!!studyauthor}} ({{!!studyyear}}, &lt;$set name=doi value={{!!studydoi}}&gt;&lt;a href=&lt;&lt;getDOI&gt;&gt; &gt;DOI&lt;/a&gt;&lt;/$set&gt;):&lt;/th&gt;&lt;th&gt;&lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;&lt;/th&gt;&lt;th&gt;{{||$:/meta/button/studyasjson}}&lt;/th&gt;
 &lt;/tr&gt;
 &lt;$list filter=&quot;[tag[Population]studyid&lt;currentTiddler&gt;]&quot;&gt;
 &lt;tr&gt;&lt;td&gt;&lt;$link&gt;{{!!populationname}}&lt;/$link&gt; (n={{!!populationsize}})&lt;/td&gt;
-&lt;td&gt;&lt;$list filter=&quot;[tag[Measurement]populationid&lt;currentTiddler&gt;count[]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt; measurement(s)&lt;/td&gt;
+&lt;td colspan=&quot;2&quot;&gt;&lt;$list filter=&quot;[tag[Measurement]populationid&lt;currentTiddler&gt;count[]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt; measurement(s)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
@@ -11430,8 +11557,9 @@ Part of: &lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;
 &lt;/details&gt;
 &lt;/$list&gt;&lt;/$list&gt;</pre>
 </div>
-<div created="20210328131833862" modified="20210328164838598" tags="" title="$:/meta/view/study">
+<div created="20210328131833862" modified="20210329234307037" tags="" title="$:/meta/view/study">
 <pre>&lt;div&gt;
+{{||$:/meta/button/studyasjson}}
 {{||$:/meta/button/editstudy}}
 &lt;div style=&quot;float:right;&quot;&gt;{{||$:/meta/button/deletestudy}}&lt;/div&gt;
 &lt;/div&gt;
@@ -11942,11 +12070,11 @@ html body.tc-body {
 <div created="20210328164348853" modified="20210329110253401" title="$:/state/searchtab-1444756290">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20210328131853221" modified="20210329002848896" title="$:/state/showeditpreview">
+<div created="20210328131853221" modified="20210329231432436" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210326182328532" modified="20210329125603084" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20210326182328532" modified="20210329235036717" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -11963,16 +12091,16 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210329125605153" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/System</pre>
+<div created="20210328141300978" modified="20210329235031208" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20210328134632736" modified="20210329125739096" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210329235031797" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210329125609170" list="[[Import to R]] Home" modified="20210329130116643" title="$:/StoryList">
+<div created="20210329215651782" list="Home" modified="20210329235336479" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -13550,10 +13678,12 @@ Add another variable? {{$:/meta/button/addvariable}}
 &lt;/tbody&gt;
 &lt;/table&gt;</pre>
 </div>
-<div created="20210328223849417" modified="20210329133941830" title="Export data">
-<pre>{{$:/meta/button/export/csv}} or {{$:/meta/button/export/json}}
+<div created="20210328223849417" modified="20210329235402470" title="Export data">
+<pre>!!! Recommended
+You can export the studies separately using the copy buttons in the [[table|Home]] or when viewing each study. The JSON is then ready for analysis, you can, for example, explore it here: http://jsonviewer.stack.hu/
 
-If you chose the CSV option ({{$:/meta/button/export/csv}}), you can use this R code to import the data:
+!!! Alternative
+Alternatively, you can export all data using {{$:/meta/button/export/csv}} or {{$:/meta/button/export/json}}. If you chose the CSV option, you can use this R code to import the data:
 
 {{Import to R}}
 
@@ -13571,7 +13701,7 @@ You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" modified="20210329130255813" title="Home">
+<div created="20210328131438059" modified="20210329215643792" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
