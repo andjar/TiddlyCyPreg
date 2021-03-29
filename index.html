@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>$:/meta/button/addresult</li>
 
+<li>$:/meta/button/addstatistics</li>
+
 <li>$:/meta/button/addstudy</li>
 
 <li>$:/meta/button/addvariable</li>
@@ -269,6 +271,8 @@ Error message and password prompt
 
 <li>$:/meta/button/deletestudy</li>
 
+<li>$:/meta/button/editstatistic</li>
+
 <li>$:/meta/button/editstudy</li>
 
 <li>$:/meta/button/editvariable</li>
@@ -276,6 +280,8 @@ Error message and password prompt
 <li>$:/meta/edit/population</li>
 
 <li>$:/meta/edit/result</li>
+
+<li>$:/meta/edit/statistics</li>
 
 <li>$:/meta/edit/study</li>
 
@@ -287,9 +293,13 @@ Error message and password prompt
 
 <li>$:/meta/template/result</li>
 
+<li>$:/meta/template/statistics</li>
+
 <li>$:/meta/template/study</li>
 
 <li>$:/meta/template/variable</li>
+
+<li>$:/meta/view/addstat</li>
 
 <li>$:/meta/view/listdata</li>
 
@@ -302,6 +312,8 @@ Error message and password prompt
 <li>$:/meta/view/result</li>
 
 <li>$:/meta/view/save</li>
+
+<li>$:/meta/view/statistics</li>
 
 <li>$:/meta/view/study</li>
 
@@ -692,6 +704,8 @@ Error message and password prompt
 <li>Contribute</li>
 
 <li>Documentation</li>
+
+<li>Edit statistic</li>
 
 <li>Edit study</li>
 
@@ -10797,6 +10811,17 @@ Add result
 &lt;/$button&gt;
 &lt;/$set&gt;&lt;/$set&gt;&lt;/$set&gt;</pre>
 </div>
+<div created="20210329104127657" modified="20210329113839781" tags="" title="$:/meta/button/addstatistics">
+<pre>&lt;$set name=newid value=&lt;&lt;uuid&gt;&gt; &gt;
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;
+&lt;$action-createtiddler $template=&quot;$:/meta/template/statistics&quot; $basetitle=&lt;&lt;newid&gt;&gt; populationid=&lt;&lt;newid&gt;&gt; measurementid={{!!title}} studyid={{!!studyid}} resultid={{!!resultid}} variableid={{!!variableid}} populationid={{!!populationid}} statmeasurements={{!!title}} type=&quot;text/vnd.tiddlywiki&quot; tags=&quot;Statistic&quot; text=&quot;{{||$:/meta/view/statistics}}&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/statid&quot; text=&lt;&lt;newid&gt;&gt; /&gt;
+&lt;$action-navigate $to=&quot;Edit statistic&quot;/&gt;
+
+P
+&lt;/$button&gt;
+&lt;/$set&gt;</pre>
+</div>
 <div created="20210328134533138" modified="20210328141957070" tags="" title="$:/meta/button/addstudy">
 <pre>&lt;$set name=newid value=&lt;&lt;uuid&gt;&gt; &gt;
 &lt;$button&gt;
@@ -10861,6 +10886,13 @@ Delete Result
 Delete study
 &lt;/$button&gt;</pre>
 </div>
+<div created="20210329120153953" modified="20210329120226905" tags="" title="$:/meta/button/editstatistic">
+<pre>&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/statid&quot; text={{!!title}} /&gt;
+&lt;$action-navigate $to=&quot;Edit statistic&quot; /&gt;
+Edit statistic
+&lt;/$button&gt;</pre>
+</div>
 <div created="20210328164832200" modified="20210328165334446" tags="" title="$:/meta/button/editstudy">
 <pre>&lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;Home&quot; currentid={{!!title}} /&gt;
@@ -10912,7 +10944,7 @@ Edit
 
 &lt;hr /&gt;</pre>
 </div>
-<div created="20210328144115572" modified="20210328155411336" tags="" title="$:/meta/edit/result">
+<div created="20210328144115572" modified="20210329114947354" tags="" title="$:/meta/edit/result">
 <pre>&lt;div class=&quot;tc-edit-fields&quot;&gt;
 &lt;table class=&quot;tc-edit-fields&quot;&gt;
 &lt;tbody&gt;
@@ -10941,13 +10973,15 @@ Edit
 &lt;table class=&quot;tc-edit-fields&quot;&gt;
 &lt;tbody&gt;
 &lt;$set name=&quot;thisTiddler&quot; value={{!!title}} &gt;
-&lt;tr&gt;&lt;th&gt;Variable&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Unit&lt;/th&gt;&lt;th&gt;Uncertainty&lt;/th&gt;&lt;th&gt;Measure&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;Variable&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Unit&lt;/th&gt;&lt;th&gt;Uncertainty&lt;/th&gt;&lt;th&gt;Measure&lt;/th&gt;&lt;/tr&gt;
 &lt;$list filter=&quot;[tag[Measurement]resultid&lt;thisTiddler&gt;]&quot;&gt;
 &lt;tr class=&quot;tc-edit-field&quot;&gt;
 &lt;th class=&quot;tc-edit-field-name&quot;&gt;{{!!variablename}}
 &lt;/th&gt;
 &lt;td class=&quot;tc-edit-field-value&quot;&gt;
 &lt;$edit-text field=variablevalue /&gt;
+&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;{{||$:/meta/view/addstat}}
 &lt;/td&gt;
 &lt;td class=&quot;tc-edit-field-value&quot;&gt;
 &lt;$edit-text field=variableunit/&gt;
@@ -10964,6 +10998,51 @@ Edit
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;</pre>
+</div>
+<div created="20210329104027683" modified="20210329120445031" tags="" title="$:/meta/edit/statistics">
+<pre>&lt;h2&gt;Chosen measurement&lt;/h2&gt;
+
+&lt;$list filter=&quot;[title{$:/temp/statid}get[measurementid]enlist-input[]]&quot;&gt;
+{{||$:/meta/view/measurement}}
+&lt;/$list&gt;
+
+&lt;h2&gt;Test&lt;/h2&gt;
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;$set name=&quot;thisTiddler&quot; value={{$:/temp/statid}} &gt;
+&lt;$set name=&quot;varid&quot; filter=&quot;[title&lt;thisTiddler&gt;get[variableid]]&quot; &gt;
+&lt;$list filter=&quot;[&lt;thisTiddler&gt;fields:exclude[list title text created tags draft.title draft.of modified type studyid populationid variableid resultid statmeasurements measurementid resultcondition]]&quot; variable=&quot;ind&quot;&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;&lt;$transclude tiddler=&quot;$:/meta/template/statistics&quot; index=&lt;&lt;ind&gt;&gt; /&gt;:&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$edit-text  tiddler=&lt;&lt;thisTiddler&gt;&gt; field=&lt;&lt;ind&gt;&gt; /&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;Tested results:&lt;br/&gt;(select multiple using holding &quot;ctrl&quot;)&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$select tiddler=&lt;&lt;thisTiddler&gt;&gt; field=&quot;statmeasurements&quot; multiple size=&quot;8&quot;&gt;
+&lt;$list filter=&quot;[title&lt;thisTiddler&gt;get[studyid]]&quot; variable=&quot;studid&quot;&gt;
+&lt;$list filter=&quot;[tag[Measurement]studyid&lt;studid&gt;variableid&lt;varid&gt;]&quot;&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt; &gt;&lt;$transclude tiddler={{!!populationid}} field=&quot;populationname&quot; /&gt;: &lt;$transclude tiddler={{!!resultid}} field=&quot;resultname&quot; /&gt;&lt;/option&gt;
+&lt;/$list&gt;&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$set&gt;&lt;/$set&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+&lt;h3&gt;Compared results&lt;/h3&gt;
+&lt;$list filter=&quot;[title{$:/temp/statid}get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;$list filter=&quot;[title&lt;currentTiddler&gt;get[resultid]]&quot;&gt;
+&lt;details&gt;&lt;summary&gt;{{!!resultname}}&lt;/summary&gt;
+{{||$:/meta/view/result}}
+&lt;/details&gt;
+&lt;/$list&gt;&lt;/$list&gt;</pre>
 </div>
 <div created="20210328142016223" modified="20210328145814680" tags="" title="$:/meta/edit/study">
 <pre>!!Properties
@@ -11101,6 +11180,12 @@ resultn: Sample size (n)
 resultgaspread: Spread GA at sampling
 resultcomment: Comment</pre>
 </div>
+<div created="20210329103852393" modified="20210329104345491" statmeasurements="" statname="" statp="" stattest="" tags="" title="$:/meta/template/statistics" type="application/x-tiddler-dictionary">
+<pre>statname: Name
+stattest: Test statistic
+statp: P value
+statmeasurements: Compared measurements</pre>
+</div>
 <div created="20210328131445171" modified="20210328132619295" studyauthor="" studydoi="" studytitle="" studyyear="" tags="" title="$:/meta/template/study" type="application/x-tiddler-dictionary">
 <pre>studytitle: Study title
 studyauthor: Author
@@ -11113,6 +11198,9 @@ variableunit: Unit
 variablemeasure: Measure
 variableuncertainty: Uncertainty
 variablevalue: Value</pre>
+</div>
+<div created="20210329114727205" modified="20210329115128559" tags="" title="$:/meta/view/addstat">
+<pre>{{||$:/meta/button/addstatistics}}&lt;$list filter=&quot;[contains:statmeasurements{!!title}]&quot;&gt;, &lt;$link&gt;r&lt;/$link&gt;&lt;/$list&gt;</pre>
 </div>
 <div created="20210328150903410" modified="20210328223221219" tags="" title="$:/meta/view/listdata">
 <pre>\define getDOI() https://doi.org/$(doi)$
@@ -11234,12 +11322,29 @@ Part of: &lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;
 &lt;/details&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210328150348701" modified="20210328163221485" tags="" title="$:/meta/view/result">
-<pre>&lt;div style=&quot;float:right;&quot;&gt;
-{{||$:/meta/button/deleteresult}}
-&lt;/div&gt;
-This is a result from the study &lt;$list filter=&quot;[title{!!studyid}]&quot;&gt;&lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;&lt;/$list&gt;, belonging to the population &lt;$list filter=&quot;[title{!!populationid}]&quot;&gt;&lt;$link&gt;{{!!populationname}}&lt;/$link&gt;&lt;/$list&gt;.
+<div created="20210328150348701" modified="20210329120015968" tags="" title="$:/meta/view/result">
+<pre>This is a result from the study &lt;$list filter=&quot;[title{!!studyid}]&quot;&gt;&lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;&lt;/$list&gt;, belonging to the population &lt;$list filter=&quot;[title{!!populationid}]&quot;&gt;&lt;$link&gt;{{!!populationname}}&lt;/$link&gt;&lt;/$list&gt;.
 
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;$set name=&quot;thisTiddler&quot; value=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;thisTiddler&gt;fields:exclude[list title text created tags draft.title draft.of modified type studyid populationid measurementid variableid resultid]]&quot; variable=&quot;ind&quot;&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;&lt;$transclude tiddler=&quot;$:/meta/template/result&quot; index=&lt;&lt;ind&gt;&gt; /&gt;:
+&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$transclude tiddler=&lt;&lt;thisTiddler&gt;&gt; field=&lt;&lt;ind&gt;&gt; /&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Measurements&lt;/summary&gt;
 &lt;div class=&quot;tc-edit-fields&quot;&gt;
 &lt;table class=&quot;tc-edit-fields&quot;&gt;
 &lt;tbody&gt;
@@ -11256,12 +11361,44 @@ This is a result from the study &lt;$list filter=&quot;[title{!!studyid}]&quot;&
 &lt;/$set&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+&lt;/details&gt;</pre>
 </div>
 <div created="20210329002812077" modified="20210329002932753" tags="" title="$:/meta/view/save">
 <pre>&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
 ''Important'': The changes you make are only visible to you. Click on the red circle with a check mark ({{$:/core/ui/Buttons/save-wiki}}) in the upper left corner of the page to save the file to your computer (including the changes you have made). As long as the circle ({{$:/core/ui/Buttons/save-wiki}}) is red, you have unsaved changes.
 &lt;/div&gt;</pre>
+</div>
+<div created="20210329115232913" modified="20210329120249200" tags="" title="$:/meta/view/statistics">
+<pre>&lt;div style=&quot;float:right&quot;&gt;
+{{||$:/meta/button/editstatistic}}
+&lt;/div&gt;
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;$set name=&quot;thisTiddler&quot; value=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;thisTiddler&gt;fields:exclude[list title text created tags draft.title draft.of modified type studyid populationid measurementid variableid resultid]]&quot; variable=&quot;ind&quot;&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;&lt;$transclude tiddler=&quot;$:/meta/template/statistics&quot; index=&lt;&lt;ind&gt;&gt; /&gt;:
+&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$transclude tiddler=&lt;&lt;thisTiddler&gt;&gt; field=&lt;&lt;ind&gt;&gt; /&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Compared results&lt;/h3&gt;
+&lt;$list filter=&quot;[title&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;$list filter=&quot;[title&lt;currentTiddler&gt;get[resultid]]&quot;&gt;
+&lt;details&gt;&lt;summary&gt;{{!!resultname}}&lt;/summary&gt;
+
+{{||$:/meta/view/result}}
+&lt;/details&gt;
+&lt;/$list&gt;&lt;/$list&gt;</pre>
 </div>
 <div created="20210328131833862" modified="20210328164838598" tags="" title="$:/meta/view/study">
 <pre>&lt;div&gt;
@@ -11772,13 +11909,13 @@ html body.tc-body {
 <div created="20210328154817091" modified="20210328165348264" title="$:/state/plugin-info--896887961-$:/plugins/inmysocks/GenTags">
 <pre>no</pre>
 </div>
-<div created="20210328164348853" modified="20210328231843102" title="$:/state/searchtab-1444756290">
-<pre>$:/core/ui/AdvancedSearch/System</pre>
+<div created="20210328164348853" modified="20210329110253401" title="$:/state/searchtab-1444756290">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div created="20210328131853221" modified="20210329002848896" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210326182328532" modified="20210329002707816" title="$:/state/sidebar">
+<div created="20210326182328532" modified="20210329120329007" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
@@ -11796,16 +11933,16 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210328234325843" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20210328141300978" modified="20210329115156862" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210328134632736" modified="20210328235256620" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210329120328304" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210329002814619" list="Home" modified="20210329003125582" title="$:/StoryList">
+<div list="Home" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -13306,7 +13443,7 @@ div::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
 <div created="20210328223524498" modified="20210328223714245" title="Contribute">
 <pre>The database lives in a single html file that is hosted on GitHub. To add new data, you can add your changes to this file and click the red save-icon to the left. Then fork the [[project on GitHub|https://github.com/andjar/CyPreg]] and upload your modified file. As soon as you're ready, you can send a pull request to have your changes merged with the main database.</pre>
 </div>
-<div created="20210328233635018" modified="20210329002818563" title="Documentation">
+<div created="20210328233635018" modified="20210329120700604" title="Documentation">
 <pre>This database is built on [[TiddlyWiki|https://tiddlywiki.com]]. The [[TiddlyWiki community|https://groups.google.com/g/tiddlywiki]] is active, kind and very helpful.
 
 {{$:/meta/view/save}}
@@ -13334,7 +13471,14 @@ For example, if you want to add //temperature// as a property of your results, y
 
 And you need to save your change by clicking on the check marker in the upper right corner.
 
-The measured variables you record are managed from the [[Edit variable]] page. When you add a variable, it will automatically show up when you add a new result to a population. The properties set in [[Edit variable]] are acting as defaults. If you change them when adding a new result, the change is only associated with that specific result.</pre>
+The measured variables you record are managed from the [[Edit variable]] page. When you add a variable, it will automatically show up when you add a new result to a population. The properties set in [[Edit variable]] are acting as defaults. If you change them when adding a new result, the change is only associated with that specific result.
+
+In addition, we have statistical results. These connects multiple measurements within the same study. You can find the template [[here|$:/meta/template/statistics]]. To add a statistical test, click on the ''P'' when adding results. If the measurement already is connected to a test, a small r will appear beside the P.</pre>
+</div>
+<div created="20210329104917435" modified="20210329105033452" title="Edit statistic">
+<pre>&lt;$list filter=&quot;[title{$:/temp/statid}]&quot;&gt;
+{{||$:/meta/edit/statistics}}
+&lt;/$list&gt;</pre>
 </div>
 <div created="20210328141809599" modified="20210328150752035" tags="" title="Edit study">
 <pre>&lt;$list filter=&quot;[title{Home!!currentid}]&quot;&gt;
@@ -13382,7 +13526,7 @@ Add another variable? {{$:/meta/button/addvariable}}
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" modified="20210329003120977" title="Home">
+<div created="20210328131438059" currentid="C94E0C08-6030-0001-E261-10708EDA1D3B" modified="20210329115040037" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
