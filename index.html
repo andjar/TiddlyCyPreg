@@ -313,6 +313,8 @@ Error message and password prompt
 
 <li>$:/meta/view/listlong</li>
 
+<li>$:/meta/view/liststatistics</li>
+
 <li>$:/meta/view/measurement</li>
 
 <li>$:/meta/view/population</li>
@@ -708,6 +710,16 @@ Error message and password prompt
 <li>C94E2712-06F0-0001-1933-17AD14F3A250</li>
 
 <li>C94E2713-36E0-0001-1D28-9D5017A71940</li>
+
+<li>C94EB80F-7200-0001-81E2-164A1B735860</li>
+
+<li>C94EB829-1180-0001-6C8A-187D113E18F3</li>
+
+<li>C94EB834-7320-0001-4A56-877E14D062C0</li>
+
+<li>C94EB83C-83A0-0001-23CA-AA33F12E88D0</li>
+
+<li>C94EB845-FCA0-0001-8CC7-16118FA0141E</li>
 
 <li>Contribute</li>
 
@@ -11422,6 +11434,35 @@ variablevalue: Value</pre>
 &lt;/table&gt;
 &lt;/div&gt;</pre>
 </div>
+<div created="20210330183357008" modified="20210330185726849" tags="" title="$:/meta/view/liststatistics">
+<pre>&lt;table class=&quot;table table-hover&quot;&gt;
+&lt;thead&gt;
+&lt;th&gt;Study&lt;/th&gt;&lt;th&gt;Groups&lt;/th&gt;&lt;th&gt;Values&lt;/th&gt;&lt;th&gt;Variable&lt;/th&gt;&lt;th&gt;P value&lt;/th&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;$list filter=&quot;[tag[Statistic]]&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;$link to={{!!studyid}}&gt;&lt;$transclude tiddler={{!!studyid}} field=&quot;studyauthor&quot; /&gt; (&lt;$transclude tiddler={{!!studyid}} field=&quot;studyyear&quot; /&gt;)&lt;/$link&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;ul&gt;&lt;li&gt;&lt;$transclude tiddler={{!!resultid}} field=&quot;resultname&quot; /&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/$list&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;ul&gt;&lt;li&gt;{{!!variablevalue}} {{!!variableunit}}&lt;/li&gt;&lt;/ul&gt;&lt;/$list&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;ul&gt;&lt;li&gt;{{!!variablename}}&lt;/li&gt;&lt;/ul&gt;&lt;/$list&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;$link&gt;{{!!statp}}&lt;/$link&gt;&lt;br/&gt;&lt;small&gt;{{!!statname}}&lt;/small&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+</div>
 <div created="20210328145923046" modified="20210328150304780" tags="" title="$:/meta/view/measurement">
 <pre>This is a measurement from the study &lt;$list filter=&quot;[title{!!studyid}]&quot;&gt;&lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;&lt;/$list&gt;, belonging to the population &lt;$list filter=&quot;[title{!!populationid}]&quot;&gt;&lt;$link&gt;{{!!populationname}}&lt;/$link&gt;&lt;/$list&gt;.
 
@@ -12070,10 +12111,10 @@ html body.tc-body {
 <div created="20210328164348853" modified="20210329110253401" title="$:/state/searchtab-1444756290">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20210328131853221" modified="20210329231432436" title="$:/state/showeditpreview">
+<div created="20210328131853221" modified="20210330185559365" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210326182328532" modified="20210329235036717" title="$:/state/sidebar">
+<div created="20210326182328532" modified="20210330183537422" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
@@ -12091,16 +12132,16 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210329235031208" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20210328141300978" modified="20210330183344379" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210328134632736" modified="20210329235031797" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210330183536775" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210329215651782" list="Home" modified="20210329235336479" title="$:/StoryList">
+<div created="20210330190522453" list="Home" modified="20210330190522453" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -13598,6 +13639,21 @@ div::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
 <div created="20210329001302670" modified="20210329001332988" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E2712-06F0-0001-1933-17AD14F3A250" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Measurement" title="C94E2713-36E0-0001-1D28-9D5017A71940" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; range" variablename="IL-6" variableuncertainty="2.99; 267.4" variableunit="pg/mL" variablevalue="10.26">
 <pre>{{||$:/meta/view/measurement}}</pre>
 </div>
+<div created="20210330182733074" measurementid="C94E26C6-B4B0-0001-58F3-10001060188D" modified="20210330185750271" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E26C4-B340-0001-2969-14FB130011DD" statmeasurements="C94E2657-5070-0001-895C-79611E4F5B00 C94E26C6-B4B0-0001-58F3-10001060188D" statname="Mann–Whitney U-test or the Kruskal–Wallis test" statp="0.002" stattest="" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Statistic" title="C94EB80F-7200-0001-81E2-164A1B735860" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210330182858741" measurementid="C94E269E-62F0-0001-DB79-D29318141E08" modified="20210330185807846" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E269D-E910-0001-28D3-49B09C9D3B20" statmeasurements="C94E2669-D0A0-0001-17EE-49D01F30D440 C94E269E-62F0-0001-DB79-D29318141E08" statname="Mann–Whitney U-test or the Kruskal–Wallis test" statp="&lt;0.025" stattest="" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Statistic" title="C94EB829-1180-0001-6C8A-187D113E18F3" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210330182931928" measurementid="C94E26DA-E780-0001-204A-71801EBA1E01" modified="20210330185817479" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E26D9-0840-0001-E4C8-10A010FA145A" statmeasurements="C94E2677-9370-0001-B77B-DB0D13855C80 C94E26DA-E780-0001-204A-71801EBA1E01" statname="Mann–Whitney U-test or the Kruskal–Wallis test" statp="&lt;0.025" stattest="" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Statistic" title="C94EB834-7320-0001-4A56-877E14D062C0" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210330182959853" measurementid="C94E2713-36E0-0001-1D28-9D5017A71940" modified="20210330185826186" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E2712-06F0-0001-1933-17AD14F3A250" statmeasurements="C94E26FA-9130-0001-C15D-B9D0FBF81CB2 C94E2713-36E0-0001-1D28-9D5017A71940" statname="Mann–Whitney U-test or the Kruskal–Wallis test" statp="0.038" stattest="" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Statistic" title="C94EB83C-83A0-0001-23CA-AA33F12E88D0" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210330183043828" measurementid="C94E26FA-9130-0001-C15D-B9D0FBF81CB2" modified="20210330185835105" populationid="C94E267F-45D0-0001-2BE0-1A1BBF90F8C0" resultid="C94E26F7-5F90-0001-E58A-5EE018311925" statmeasurements="C94E2657-5070-0001-895C-79611E4F5B00 C94E26FA-9130-0001-C15D-B9D0FBF81CB2" statname="Mann–Whitney U-test or the Kruskal–Wallis test" statp="&lt;0.025" stattest="" studyid="C94E260F-3DB0-0001-962A-8A301C40F0B0" tags="Statistic" title="C94EB845-FCA0-0001-8CC7-16118FA0141E" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
 <div created="20210328223524498" modified="20210328223714245" title="Contribute">
 <pre>The database lives in a single html file that is hosted on GitHub. To add new data, you can add your changes to this file and click the red save-icon to the left. Then fork the [[project on GitHub|https://github.com/andjar/CyPreg]] and upload your modified file. As soon as you're ready, you can send a pull request to have your changes merged with the main database.</pre>
 </div>
@@ -13701,17 +13757,25 @@ You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" modified="20210329215643792" title="Home">
+<div created="20210328131438059" currentid="C94E260F-3DB0-0001-962A-8A301C40F0B0" modified="20210330190537429" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
 
-&lt;hr&gt;
+&lt;hr /&gt;
 {{$:/meta/button/addstudy}} | {{$:/meta/button/clean}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/export/csv}}
-&lt;hr&gt;
-&lt;$list filter=&quot;[tag[Variable]]&quot;&gt; &lt;$link&gt;{{!!variablename}}&lt;/$link&gt; |&lt;/$list&gt;
-&lt;hr&gt;
-{{$:/meta/view/listdata}}</pre>
+
+&lt;hr /&gt;
+&lt;$list filter=&quot;[tag[Variable]butlast[]]&quot;&gt;&lt;$link&gt;{{!!variablename}}&lt;/$link&gt; / &lt;/$list&gt;&lt;$list filter=&quot;[tag[Variable]last[]]&quot;&gt;&lt;$link&gt;{{!!variablename}}&lt;/$link&gt;&lt;/$list&gt;
+&lt;hr /&gt;
+
+&lt;details&gt;&lt;summary&gt;Results&lt;/summary&gt;
+{{$:/meta/view/listdata}}
+&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;Findings&lt;/summary&gt;
+{{$:/meta/view/liststatistics}}
+&lt;/details&gt;</pre>
 </div>
 <div created="20210329130341850" modified="20210329133648169" tags="" title="Import to R">
 <pre>```R
