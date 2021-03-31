@@ -315,6 +315,8 @@ Error message and password prompt
 
 <li>$:/meta/view/liststatistics</li>
 
+<li>$:/meta/view/liststatistics/filter</li>
+
 <li>$:/meta/view/measurement</li>
 
 <li>$:/meta/view/population</li>
@@ -342,6 +344,8 @@ Error message and password prompt
 <li>$:/plugins/inmysocks/GenericTagFields/ListLikeTagsMacro</li>
 
 <li>$:/plugins/inmysocks/GenTags</li>
+
+<li>$:/plugins/tobibeer/contains</li>
 
 <li>$:/SiteSubtitle</li>
 
@@ -10788,7 +10792,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/config/HideSidebarOnStartup]]</pre>
+# [[$:/plugins/tobibeer/contains]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -11583,6 +11587,64 @@ variablemethod: Methodology</pre>
 &lt;/tbody&gt;
 &lt;/table&gt;</pre>
 </div>
+<div created="20210331121420120" modified="20210331133621668" tags="" title="$:/meta/view/liststatistics/filter">
+<pre>&lt;div style=&quot;display: flex;&quot;&gt;
+&lt;div style=&quot;width:50%&quot;&gt;
+&lt;h4&gt;Condition&lt;/h4&gt;
+&lt;$select tiddler='$:/temp/listfilter' field='filterstatistics' multiple size='8'&gt;
+&lt;$list filter='[each:list-item[resultcondition]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/div&gt;
+&lt;div style=&quot;width:50%;&quot;&gt;
+&lt;h4&gt;Variable&lt;/h4&gt;
+&lt;$select tiddler='$:/temp/listfilter' field='filtervariable' multiple size='8'&gt;
+&lt;$list filter='[each:list-item[variablename]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;table class=&quot;table table-hover&quot;&gt;
+&lt;thead&gt;
+&lt;th&gt;Study&lt;/th&gt;&lt;th&gt;Groups&lt;/th&gt;&lt;th&gt;Values&lt;/th&gt;&lt;th&gt;Variable&lt;/th&gt;&lt;th&gt;P value&lt;/th&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;$list filter=&quot;[tag[Statistic]]&quot;&gt;
+&lt;$vars cTiddler=&lt;&lt;currentTiddler&gt;&gt; mid={{!!measurementid}} rid={{!!resultid}} idlist={{!!statmeasurements}}&gt;
+&lt;$list filter=&quot;[title&lt;mid&gt;contains:variablename $any{$:/temp/listfilter!!filtervariable}]&quot;&gt;
+&lt;$set name=&quot;condlist&quot; filter=&quot;[enlist&lt;idlist&gt;get[resultid]each:list-item[resultcondition]]&quot;&gt;
+&lt;$list filter=&quot;[enlist&lt;condlist&gt;contains:$all{$:/temp/listfilter!!filterstatistics}first[]]&quot;&gt;
+&lt;$tiddler tiddler=&lt;&lt;cTiddler&gt;&gt; &gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;$link to={{!!studyid}}&gt;&lt;$transclude tiddler={{!!studyid}} field=&quot;studyauthor&quot; /&gt; (&lt;$transclude tiddler={{!!studyid}} field=&quot;studyyear&quot; /&gt;)&lt;/$link&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;ul&gt;&lt;li&gt;&lt;$transclude tiddler={{!!resultid}} field=&quot;resultname&quot; /&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/$list&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;ul&gt;&lt;li&gt;{{!!variablevalue}} {{!!variableunit}}&lt;/li&gt;&lt;/ul&gt;&lt;/$list&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get[statmeasurements]enlist-input[]]&quot;&gt;
+&lt;ul&gt;&lt;li&gt;{{!!variablename}}&lt;/li&gt;&lt;/ul&gt;&lt;/$list&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;$link&gt;{{!!statp}}&lt;/$link&gt;&lt;br/&gt;&lt;small&gt;{{!!statname}}&lt;/small&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$tiddler&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+&lt;/$list&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+</div>
 <div created="20210328145923046" modified="20210328150304780" tags="" title="$:/meta/view/measurement">
 <pre>This is a measurement from the study &lt;$list filter=&quot;[title{!!studyid}]&quot;&gt;&lt;$link&gt;{{!!studytitle}}&lt;/$link&gt;&lt;/$list&gt;, belonging to the population &lt;$list filter=&quot;[title{!!populationid}]&quot;&gt;&lt;$link&gt;{{!!populationname}}&lt;/$link&gt;&lt;/$list&gt;.
 
@@ -12114,6 +12176,22 @@ Example `&lt;&lt;EditTagLikeList tags Tags&gt;&gt;`:
     }
 }</pre>
 </div>
+<div author="Tobias Beer" bag="default" core-version="&gt;=5.1.9" dependents="" description="Filter titles/listfields containing a value or any / all / exactly those values from a list" documentation="https://tobibeer.github.io/tw5-contains" list="readme" plugin-type="plugin" revision="0" source="https://github.com/tobibeer/tw5-contains" title="$:/plugins/tobibeer/contains" type="application/json" version="0.6.0">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/tobibeer/contains/filters.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/contains/filters.js&quot;,
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tobibeer/contains/filters.js\r\ntype: application/javascript\r\nmodule-type: filteroperator\r\n\r\nFilters input titles as to whether they (or their fields) contain\r\na value or any/all values specified in the operand\r\n\r\n@preserve\r\n\\*/\n(function(){\&quot;use strict\&quot;;exports.contains=function(i,e,t){var f,n,u,s=true,r=[],l=[],a=e.operand||\&quot;\&quot;,c=e.prefix===\&quot;!\&quot;;$tw.utils.each((e.suffix||\&quot;\&quot;).split(\&quot; \&quot;),function(i){if(i){if(i.substr(0,1)===\&quot;$\&quot;){u=i.substr(1)}else{f=i}}});a=u?$tw.utils.parseStringArray(a):a;if(!f){i(function(i,e){r.push(e)})}if(u&amp;&amp;a.length&lt;1||!u&amp;&amp;!a){if(u===\&quot;exactly\&quot;){return c?r:[]}else{return c?[]:r}}else{switch(u){case\&quot;any\&quot;:if(f){i(function(i,e){s=0;n=t.wiki.getTiddlerList(e,f);$tw.utils.each(a,function(i){if(n.indexOf(i)&gt;-1){s=1;return false}});if(s&amp;&amp;!c||c&amp;&amp;!s){l.push(e)}})}else{s=0;$tw.utils.each(a,function(i){if(r.indexOf(i)&gt;-1){s=1;return false}});if(s&amp;&amp;!c||c&amp;&amp;!s){l=r}}break;case\&quot;all\&quot;:if(f){i(function(i,e){n=t.wiki.getTiddlerList(e,f);s=true;$tw.utils.each(a,function(i){s=s&amp;&amp;n.indexOf(i)&gt;-1;if(!s){return false}});if(s&amp;&amp;!c||c&amp;&amp;!s){l.push(e)}})}else{$tw.utils.each(a,function(i){s=s&amp;&amp;r.indexOf(i)&gt;-1;if(!s){return false}});if(s&amp;&amp;!c||c&amp;&amp;!s){l=r}}break;case\&quot;exactly\&quot;:if(f){i(function(i,e){n=t.wiki.getTiddlerList(e,f);s=true;$tw.utils.each(a,function(i){s=s&amp;&amp;n.indexOf(i)&gt;-1;if(!s){return false}});if(s){$tw.utils.each(n,function(i){s=s&amp;&amp;a.indexOf(i)&gt;-1;if(!s){return false}})}if(s&amp;&amp;!c||c&amp;&amp;!s){l.push(e)}})}else{$tw.utils.each(a,function(i){s=s&amp;&amp;r.indexOf(i)&gt;-1;if(!s){return false}});if(s){$tw.utils.each(r,function(i){s=s&amp;&amp;a.indexOf(i)&gt;-1;if(!s){return false}})}if(s&amp;&amp;!c||c&amp;&amp;!s){l=r}}break;default:if(f){i(function(i,e){n=t.wiki.getTiddlerList(e,f);s=n.indexOf(a)&gt;-1;if(s&amp;&amp;!c||c&amp;&amp;!s){l.push(e)}})}else{s=r.indexOf(a)&gt;-1;if(s&amp;&amp;!c||c&amp;&amp;!s){l=r}}}}return l}})();&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;filteroperator&quot;
+        },
+        &quot;$:/plugins/tobibeer/contains/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/contains/readme&quot;,
+            &quot;text&quot;: &quot;\\define intro(which) &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;//@@color:grey;returns $which$...@@//\r\n\\define case(code, summary)\r\n//@@color:grey;$summary$:@@//&lt;br&gt;\r\n`$code$`\r\n\\end\n\nProvides the ''contains[]'' [[filter operator|http://tiddlywiki.com#Filters]] returning those titles where the title or titles in a list field contain a value or any/all values from another list.\n\n; documentation / examples / demos...\r\n: http://tobibeer.github.io/tw5-plugins#contains\r\n; variants\r\n: ''note:'' all variants allow negation via `!contains ...[...]`\r\n: ''compare input titles against title(s) in the operand:''&lt;&lt;intro \&quot;all ''input titles'', unmodified, if the input titles\&quot;&gt;&gt;&lt;ul style=\&quot;margin:0;\&quot;&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains[&lt;value&gt;]\&quot; \&quot;contain ''&amp;lt;value&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:$any[&lt;list&gt;]\&quot; \&quot;contain ''any'' titles in ''&amp;lt;list&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:$all[&lt;list&gt;]\&quot; \&quot;contain ''all'' titles in ''&amp;lt;list&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:$exactly[&lt;list&gt;]\&quot; \&quot;contain ''exactly'' those titles in ''&amp;lt;list&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;/ul&gt;\r\n: ''compare list fields of input titles against title(s) in the operand:''&lt;&lt;intro \&quot;those input titles where the ''&amp;lt;listfield&gt;''\&quot;&gt;&gt;&lt;ul style=\&quot;margin:0;\&quot;&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:&lt;listfield&gt;[&lt;value&gt;]\&quot; \&quot;contains ''&amp;lt;value&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:&lt;listfield&gt; $any[&lt;list&gt;]\&quot; \&quot;contains ''any'' titles in ''&amp;lt;list&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:&lt;listfield&gt; $all[&lt;list&gt;]\&quot; \&quot;contains ''all'' titles in ''&amp;lt;list&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;li&gt;&lt;&lt;case \&quot;contains:&lt;listfield&gt; $exactly[&lt;list&gt;]\&quot; \&quot;contains ''exactly'' those titles in ''&amp;lt;list&gt;''\&quot;&gt;&gt;&lt;/li&gt;\r\n&lt;/ul&gt;&quot;
+        }
+    }
+}</pre>
+</div>
 <div created="20210326182304913" modified="20210326182325650" title="$:/SiteSubtitle">
 <pre>A TiddlyWiki for meta-analysis</pre>
 </div>
@@ -12228,13 +12306,13 @@ html body.tc-body {
 <div created="20210328154817091" modified="20210328165348264" title="$:/state/plugin-info--896887961-$:/plugins/inmysocks/GenTags">
 <pre>no</pre>
 </div>
-<div created="20210328164348853" modified="20210330234433030" title="$:/state/searchtab-1444756290">
-<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+<div created="20210328164348853" modified="20210331130157470" title="$:/state/searchtab-1444756290">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20210328131853221" modified="20210330185559365" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20210328131853221" modified="20210331123653390" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
-<div created="20210326182328532" modified="20210331000118786" title="$:/state/sidebar">
+<div created="20210326182328532" modified="20210331125252895" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
@@ -12255,13 +12333,13 @@ html body.tc-body {
 <div created="20210328141300978" modified="20210330232319324" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210328134632736" modified="20210330232824519" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210331125252415" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Home" title="$:/StoryList">
+<div created="20210331125250384" list="Home" modified="20210331133029832" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190202142800922" creator="jd" modified="20190202142800922" modifier="jd" title="$:/theme">
@@ -14042,7 +14120,7 @@ You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" modified="20210331000118761" title="Home">
+<div created="20210328131438059" modified="20210331133649754" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
@@ -14059,7 +14137,7 @@ You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 &lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;Findings&lt;/summary&gt;
-{{$:/meta/view/liststatistics}}
+{{$:/meta/view/liststatistics/filter}}
 &lt;/details&gt;</pre>
 </div>
 <div created="20210329130341850" modified="20210329133648169" tags="" title="Import to R">
