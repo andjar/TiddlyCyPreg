@@ -259,6 +259,8 @@ Error message and password prompt
 
 <li>$:/meta/button/addvariable</li>
 
+<li>$:/meta/button/allstudiesasjson</li>
+
 <li>$:/meta/button/clean</li>
 
 <li>$:/meta/button/copyvariable</li>
@@ -288,6 +290,8 @@ Error message and password prompt
 <li>$:/meta/edit/statistics</li>
 
 <li>$:/meta/edit/study</li>
+
+<li>$:/meta/export/allstudies</li>
 
 <li>$:/meta/startup</li>
 
@@ -11099,6 +11103,13 @@ Add variable
 &lt;/$button&gt;
 &lt;/$set&gt;</pre>
 </div>
+<div created="20210402172353614" modified="20210402172512673" tags="" title="$:/meta/button/allstudiesasjson">
+<pre>&lt;$wikify name=json text=&lt;&lt;allstudiesasjson&gt;&gt; &gt;
+&lt;$button message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;json&gt;&gt; &gt;
+Copy all studies as json
+&lt;/$button&gt;
+&lt;/$wikify&gt;</pre>
+</div>
 <div created="20210329001527543" modified="20210329002021293" tags="" title="$:/meta/button/clean">
 <pre>&lt;$button&gt;
 &lt;$action-confirm $message=&quot;Do you wish to delete measurements without value?&quot;&gt;
@@ -11378,6 +11389,20 @@ See &lt;$link&gt;{{!!studyauthor}}: {{!!studytitle}} ({{!!studyyear}})&lt;/$link
 &lt;hr/&gt;
 
 {{||$:/meta/button/addpopulation}}</pre>
+</div>
+<div created="20210402170859913" modified="20210402172507116" tags="$:/tags/Macro" title="$:/meta/export/allstudies">
+<pre>\define allstudiesasjson()
+{&lt;br/&gt;
+&quot;studies&quot;:[
+&lt;$list filter=&quot;[tag[Study]butlast[]]&quot;&gt;
+&lt;&lt;studyasjson&gt;&gt;,
+&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[Study]last[]]&quot;&gt;
+&lt;&lt;studyasjson&gt;&gt;
+&lt;/$list&gt;
+]&lt;br/&gt;
+}
+\end</pre>
 </div>
 <div created="20210328165516802" modified="20210328165601340" tags="$:/tags/StartupAction" title="$:/meta/startup">
 <pre>&lt;$action-deletefield $tiddler=&quot;Home&quot; currentid /&gt;</pre>
@@ -12437,10 +12462,10 @@ html body.tc-body {
 <div created="20210328164348853" modified="20210331130157470" title="$:/state/searchtab-1444756290">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20210328131853221" modified="20210331123653390" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20210328131853221" modified="20210402171059645" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
-<div created="20210326182328532" modified="20210402011650291" title="$:/state/sidebar">
+<div created="20210326182328532" modified="20210402172731656" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
@@ -12458,10 +12483,10 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210402011351594" title="$:/state/tab/moresidebar-1850697562">
+<div created="20210328141300978" modified="20210402172729158" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20210328134632736" modified="20210402011353857" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210402172730107" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -14440,13 +14465,13 @@ You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" currentid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" modified="20210402005819959" title="Home">
+<div created="20210328131438059" modified="20210402172548570" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
 
 &lt;hr /&gt;
-{{$:/meta/button/addstudy}} | {{$:/meta/button/clean}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/export/csv}}
+{{$:/meta/button/addstudy}} | {{$:/meta/button/clean}} | [[Edit variable]] | [[Export data]] | {{$:/meta/button/allstudiesasjson}}
 
 &lt;hr /&gt;
 &lt;$list filter=&quot;[tag[Variable]butlast[]]&quot;&gt;&lt;$link&gt;{{!!variablename}}&lt;/$link&gt; / &lt;/$list&gt;&lt;$list filter=&quot;[tag[Variable]last[]]&quot;&gt;&lt;$link&gt;{{!!variablename}}&lt;/$link&gt;&lt;/$list&gt;
