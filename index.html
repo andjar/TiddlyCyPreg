@@ -245,8 +245,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/macros/skeeve/uuid.js</li>
@@ -888,6 +886,80 @@ Error message and password prompt
 <li>C94F728F-F920-0001-C121-1F7092701A35</li>
 
 <li>C94F7293-35F0-0001-BFBA-142252023740</li>
+
+<li>C94F7316-99E0-0001-F9BC-1B1019DD3FF0</li>
+
+<li>C94F735C-E300-0001-A570-1456700714DE</li>
+
+<li>C94F7386-1CE0-0001-5237-1F50243014E5</li>
+
+<li>C94F7395-5F30-0001-77F7-102047CC162D</li>
+
+<li>C94F739A-3360-0001-EAE4-107E8036EC50</li>
+
+<li>C94F739A-3380-0001-6893-147014441F26</li>
+
+<li>C94F739A-33C0-0001-2381-13A0B40AEB50</li>
+
+<li>C94F739A-33C0-0001-CF9A-22001FD013AC</li>
+
+<li>C94F73A0-4350-0001-A67D-7B4018811330</li>
+
+<li>C94F73A1-7920-0001-4978-1E9014601E25</li>
+
+<li>C94F73A1-7930-0001-2A63-108C3F201370</li>
+
+<li>C94F73A1-7950-0001-20B2-F598E4F01A02</li>
+
+<li>C94F73A1-7950-0001-5D36-1CE012201853</li>
+
+<li>C94F73A6-5FD0-0001-E7AC-E72EED011790</li>
+
+<li>C94F73B7-A540-0001-EBE4-3B001E501040</li>
+
+<li>C94F73B8-8260-0001-77B0-10501043115A</li>
+
+<li>C94F73B8-8270-0001-95B2-1B7B20002980</li>
+
+<li>C94F73B8-8290-0001-E14C-B5E096101F80</li>
+
+<li>C94F73B8-82A0-0001-E965-1F50429615DA</li>
+
+<li>C94F73BC-9040-0001-92E9-13C212151275</li>
+
+<li>C94F73CA-CC30-0001-FE77-B8001F5B150A</li>
+
+<li>C94F73CD-5690-0001-EC93-18801950C420</li>
+
+<li>C94F73CD-56A0-0001-65D8-126E1F5C1D2C</li>
+
+<li>C94F73CD-56D0-0001-607C-18337E4F1380</li>
+
+<li>C94F73CD-56E0-0001-2E8A-5BF01D60CEF0</li>
+
+<li>C94F7450-B4E0-0001-6F8E-22001DB0C000</li>
+
+<li>C94F745B-DBB0-0001-EA34-12501A00BF40</li>
+
+<li>C94F7462-D290-0001-E4E5-B77AE770154D</li>
+
+<li>C94F7468-2E80-0001-7D17-D5BB115622D0</li>
+
+<li>C94F746D-7E90-0001-2B2E-10D065D647B0</li>
+
+<li>C94F747D-76F0-0001-42BE-1FF7D8F0B340</li>
+
+<li>C94F7482-DAA0-0001-F034-1D4010491093</li>
+
+<li>C94F7486-C370-0001-B751-2A5B1D8B117C</li>
+
+<li>C94F748B-0670-0001-3C17-1740C07A1100</li>
+
+<li>C94F748F-A750-0001-7DE0-EBE0114D12F3</li>
+
+<li>C94F7492-B9F0-0001-6373-8910C9671E37</li>
+
+<li>C94F7496-14E0-0001-3935-1470147D2260</li>
 
 <li>Contribute</li>
 
@@ -10843,11 +10915,6 @@ exports.startup = function() {
 <div created="20210326182254306" modified="20210326182254722" title="$:/DefaultTiddlers">
 <pre>Home</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[$:/plugins/tobibeer/contains]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -11273,8 +11340,15 @@ Copy study as json
 &lt;/details&gt;
 &lt;/$list&gt;&lt;/$list&gt;</pre>
 </div>
-<div created="20210328142016223" modified="20210328145814680" tags="" title="$:/meta/edit/study">
+<div created="20210328142016223" modified="20210402005929529" tags="" title="$:/meta/edit/study">
 <pre>!!Properties
+&lt;$list filter=&quot;[has[studydoi]studydoi{!!studydoi}!title&lt;currentTiddler&gt;]&quot;&gt;
+&lt;div class=&quot;alert alert-danger&quot;&gt;
+The DOI already exists. Has the study been added before?
+
+See &lt;$link&gt;{{!!studyauthor}}: {{!!studytitle}} ({{!!studyyear}})&lt;/$link&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
 &lt;div class=&quot;tc-edit-fields&quot;&gt;
 &lt;table class=&quot;tc-edit-fields&quot;&gt;
 &lt;tbody&gt;
@@ -12366,7 +12440,7 @@ html body.tc-body {
 <div created="20210328131853221" modified="20210331123653390" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20210326182328532" modified="20210402004218620" title="$:/state/sidebar">
+<div created="20210326182328532" modified="20210402011650291" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210328160951188" modified="20210328160951188" title="$:/state/tab--1498284803">
@@ -12384,10 +12458,10 @@ html body.tc-body {
 <div created="20210328165402969" modified="20210328165409779" title="$:/state/tab-789488117">
 <pre>$:/themes/jd/Mono/Config/SidebarSegments</pre>
 </div>
-<div created="20210328141300978" modified="20210330232319324" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/System</pre>
+<div created="20210328141300978" modified="20210402011351594" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20210328134632736" modified="20210402004216999" title="$:/state/tab/sidebar--595412856">
+<div created="20210328134632736" modified="20210402011353857" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -14152,6 +14226,117 @@ div::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); }
 <div created="20210402004633847" measurementid="C94F71B7-4C30-0001-B8F5-1A30F5101513" modified="20210402004638026" populationid="C94F7168-5F30-0001-CAB3-32EB191716A3" resultid="C94F71B5-AB00-0001-915E-44CFF016C4D0" statmeasurements="C94F71A8-1000-0001-4B87-1DF911326B60 C94F71B7-4C30-0001-B8F5-1A30F5101513" statname="" statp="&gt;0.05" stattest="" studyid="C94F7148-6720-0001-602A-B900F470D6D0" tags="Statistic" title="C94F7293-35F0-0001-BFBA-142252023740" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
 <pre>{{||$:/meta/view/statistics}}</pre>
 </div>
+<div created="20210402005819955" modified="20210402010011652" studyauthor="Niren Ray Maharaj" studydoi="10.1371/journal.pone.0170063" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" studytitle="Pro-Inflammatory Cytokine Levels in HIV Infected and Uninfected Pregnant Women with and without Preeclampsia" studyyear="2017" tags="Study" title="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/study}}</pre>
+</div>
+<div created="20210402010041816" modified="20210402010300510" populationage="24.8" populationbirthlength="" populationbirthweight="" populationbmi="24.3" populationcomment="" populationcondition="Preeclampsia" populationdiastolic="101.9" populationfemale="" populationga="35.8" populationgadelivery="" populationid="C94F735C-E300-0001-A570-1456700714DE" populationmap="" populationname="Preeclampsia HIV uninfected" populationplacentaweight="" populationprimipara="26" populationsize="53" populationsmoking="" populationsystolic="157.1" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Population" title="C94F735C-E300-0001-A570-1456700714DE" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/population}}</pre>
+</div>
+<div created="20210402010307531" modified="20210402010403011" populationage="28.8" populationbirthlength="" populationbirthweight="" populationbmi="39.4" populationcomment="" populationcondition="Preeclampsia HIV" populationdiastolic="104.5" populationfemale="" populationga="34.7" populationgadelivery="" populationid="C94F7386-1CE0-0001-5237-1F50243014E5" populationmap="" populationname="Preeclampsia HIV infected" populationplacentaweight="" populationprimipara="18" populationsize="45" populationsmoking="" populationsystolic="159.0" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Population" title="C94F7386-1CE0-0001-5237-1F50243014E5" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/population}}</pre>
+</div>
+<div created="20210402010422820" modified="20210402010447595" populationid="C94F735C-E300-0001-A570-1456700714DE" resultcomment="" resultcondition="Preeclampsia" resultga="35.6" resultgaspread="3.3" resultid="C94F7395-5F30-0001-77F7-102047CC162D" resultn="53" resultname="Preeclampsia HIV uninfected" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Result" title="C94F7395-5F30-0001-77F7-102047CC162D" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210402010422806" modified="20210402011443470" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F739A-3360-0001-EAE4-107E8036EC50" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-2" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="273.2">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010422808" modified="20210402011444057" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F739A-3380-0001-6893-147014441F26" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median; 25.-75. percentile" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-6" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="147.0">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010422812" modified="20210402011450950" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F739A-33C0-0001-2381-13A0B40AEB50" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF" variablemeasure="Median; 25.-75. percentile" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IFN-g" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="218.3">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010422812" modified="20210402011450133" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F739A-33C0-0001-CF9A-22001FD013AC" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="TNF-a" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="185.2">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010452603" modified="20210402010512643" populationid="C94F7386-1CE0-0001-5237-1F50243014E5" resultcomment="" resultcondition="HIV Preeclampsia" resultga="34.2" resultgaspread="4.5" resultid="C94F73A0-4350-0001-A67D-7B4018811330" resultn="45" resultname="Preeclampsia HIV infected" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Result" title="C94F73A0-4350-0001-A67D-7B4018811330" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210402010452594" modified="20210402011518468" populationid="C94F7386-1CE0-0001-5237-1F50243014E5" resultid="C94F73A0-4350-0001-A67D-7B4018811330" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73A1-7920-0001-4978-1E9014601E25" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-2" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="268.7">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010452595" modified="20210402011517634" populationid="C94F7386-1CE0-0001-5237-1F50243014E5" resultid="C94F73A0-4350-0001-A67D-7B4018811330" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73A1-7930-0001-2A63-108C3F201370" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-6" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="139.7">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010452597" modified="20210402011515733" populationid="C94F7386-1CE0-0001-5237-1F50243014E5" resultid="C94F73A0-4350-0001-A67D-7B4018811330" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73A1-7950-0001-20B2-F598E4F01A02" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="TNF-a" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="172.2">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010452597" modified="20210402011516673" populationid="C94F7386-1CE0-0001-5237-1F50243014E5" resultid="C94F73A0-4350-0001-A67D-7B4018811330" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73A1-7950-0001-5D36-1CE012201853" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IFN-g" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="214.1">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010518965" modified="20210402010623387" populationage="24.6" populationbirthlength="" populationbirthweight="" populationbmi="29.7" populationcomment="" populationcondition="Normal" populationdiastolic="" populationfemale="" populationga="38.2" populationgadelivery="" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" populationmap="" populationname="Normotensive uninfected" populationplacentaweight="" populationprimipara="17" populationsize="50" populationsmoking="" populationsystolic="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Population" title="C94F73A6-5FD0-0001-E7AC-E72EED011790" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/population}}</pre>
+</div>
+<div created="20210402010626959" modified="20210402010643514" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultcomment="" resultcondition="Normal" resultga="38.2" resultgaspread="1.6" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" resultn="50" resultname="Normotensive uninfected" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Result" title="C94F73B7-A540-0001-EBE4-3B001E501040" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210402010626950" modified="20210402011512895" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73B8-8260-0001-77B0-10501043115A" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-2" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="274.4">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010626951" modified="20210402011512025" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73B8-8270-0001-95B2-1B7B20002980" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-6" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="149.8">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010626953" modified="20210402011511216" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73B8-8290-0001-E14C-B5E096101F80" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IFN-g" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="217.1">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010626954" modified="20210402011510383" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73B8-82A0-0001-E965-1F50429615DA" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="TNF-a" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="198.8">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010656301" modified="20210402010741822" populationage="28.0" populationbirthlength="" populationbirthweight="" populationbmi="30.1" populationcomment="" populationcondition="HIV" populationdiastolic="" populationfemale="" populationga="37.6" populationgadelivery="" populationid="C94F73BC-9040-0001-92E9-13C212151275" populationmap="" populationname="Normotensive HIV infected" populationplacentaweight="" populationprimipara="5" populationsize="45" populationsmoking="" populationsystolic="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Population" title="C94F73BC-9040-0001-92E9-13C212151275" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/population}}</pre>
+</div>
+<div created="20210402010752276" modified="20210402010811847" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultcomment="" resultcondition="HIV" resultga="35.7" resultgaspread="2.7" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" resultn="45" resultname="Normotensive HIV infected" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Result" title="C94F73CA-CC30-0001-FE77-B8001F5B150A" type="text/vnd.tiddlywiki">
+<pre>{{||$:/meta/view/result}}</pre>
+</div>
+<div created="20210402010752265" modified="20210402011502940" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73CD-5690-0001-EC93-18801950C420" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-2" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="257.6">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010752266" modified="20210402011505633" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73CD-56A0-0001-65D8-126E1F5C1D2C" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IL-6" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="133.0">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010752269" modified="20210402011506890" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73CD-56D0-0001-607C-18337E4F1380" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="IFN-g" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="214.1">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402010752270" modified="20210402011507695" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Measurement" title="C94F73CD-56E0-0001-2E8A-5BF01D60CEF0" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C" variablemeasure="Median" variablemethod="BD Cytometric Bead Array Human Th1/Th2/Th17 Cytokine kit" variablename="TNF-a" variablesample="Serum" variableuncertainty="" variableunit="pg/mL" variablevalue="174.8">
+<pre>{{||$:/meta/view/measurement}}</pre>
+</div>
+<div created="20210402011705209" measurementid="C94F739A-3360-0001-EAE4-107E8036EC50" modified="20210402011731475" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" statmeasurements="C94F739A-3360-0001-EAE4-107E8036EC50 C94F73A1-7920-0001-4978-1E9014601E25" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0008" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7450-B4E0-0001-6F8E-22001DB0C000" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402011745237" measurementid="C94F739A-3380-0001-6893-147014441F26" modified="20210402011759961" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" statmeasurements="C94F739A-3380-0001-6893-147014441F26 C94F73A1-7930-0001-2A63-108C3F201370" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0865" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F745B-DBB0-0001-EA34-12501A00BF40" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402011811223" measurementid="C94F739A-33C0-0001-2381-13A0B40AEB50" modified="20210402011820004" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" statmeasurements="C94F739A-33C0-0001-2381-13A0B40AEB50 C94F73A1-7950-0001-5D36-1CE012201853" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0233" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7462-D290-0001-E4E5-B77AE770154D" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402011833672" measurementid="C94F739A-33C0-0001-CF9A-22001FD013AC" modified="20210402011843795" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" statmeasurements="C94F739A-33C0-0001-CF9A-22001FD013AC C94F73A1-7950-0001-20B2-F598E4F01A02" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0001" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7468-2E80-0001-7D17-D5BB115622D0" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402011914299" measurementid="C94F739A-3360-0001-EAE4-107E8036EC50" modified="20210402011939811" populationid="C94F735C-E300-0001-A570-1456700714DE" resultid="C94F7395-5F30-0001-77F7-102047CC162D" statmeasurements="C94F739A-3360-0001-EAE4-107E8036EC50 C94F73B8-8260-0001-77B0-10501043115A" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.9384" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F746D-7E90-0001-2B2E-10D065D647B0" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402011958444" measurementid="C94F73B8-8270-0001-95B2-1B7B20002980" modified="20210402012011441" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" statmeasurements="C94F739A-3380-0001-6893-147014441F26 C94F73B8-8270-0001-95B2-1B7B20002980" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.7743" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F747D-76F0-0001-42BE-1FF7D8F0B340" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402012019014" measurementid="C94F73B8-8290-0001-E14C-B5E096101F80" modified="20210402012028117" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" statmeasurements="C94F739A-33C0-0001-2381-13A0B40AEB50 C94F73B8-8290-0001-E14C-B5E096101F80" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.5534" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7482-DAA0-0001-F034-1D4010491093" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402012034603" measurementid="C94F73B8-82A0-0001-E965-1F50429615DA" modified="20210402012045677" populationid="C94F73A6-5FD0-0001-E7AC-E72EED011790" resultid="C94F73B7-A540-0001-EBE4-3B001E501040" statmeasurements="C94F739A-33C0-0001-CF9A-22001FD013AC C94F73B8-82A0-0001-E965-1F50429615DA" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.2792" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7486-C370-0001-B751-2A5B1D8B117C" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402012055865" measurementid="C94F73CD-5690-0001-EC93-18801950C420" modified="20210402012104172" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" statmeasurements="C94F73B8-8260-0001-77B0-10501043115A C94F73CD-5690-0001-EC93-18801950C420" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0104" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F748B-0670-0001-3C17-1740C07A1100" type="text/vnd.tiddlywiki" variableid="C94E0BB9-4740-0001-5A92-96A0156315CE">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402012110611" measurementid="C94F73CD-56A0-0001-65D8-126E1F5C1D2C" modified="20210402012117830" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" statmeasurements="C94F73B8-8270-0001-95B2-1B7B20002980 C94F73CD-56A0-0001-65D8-126E1F5C1D2C" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0051" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F748F-A750-0001-7DE0-EBE0114D12F3" type="text/vnd.tiddlywiki" variableid="C94E0BD4-83D0-0001-7387-12401A001BB5">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402012122589" measurementid="C94F73CD-56D0-0001-607C-18337E4F1380" modified="20210402012132374" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" statmeasurements="C94F73B8-8290-0001-E14C-B5E096101F80 C94F73CD-56D0-0001-607C-18337E4F1380" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.3451" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7492-B9F0-0001-6373-8910C9671E37" type="text/vnd.tiddlywiki" variableid="C94E0BE0-3F20-0001-1D46-18001A2619EF">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
+<div created="20210402012136565" measurementid="C94F73CD-56E0-0001-2E8A-5BF01D60CEF0" modified="20210402012146295" populationid="C94F73BC-9040-0001-92E9-13C212151275" resultid="C94F73CA-CC30-0001-FE77-B8001F5B150A" statmeasurements="C94F73B8-82A0-0001-E965-1F50429615DA C94F73CD-56E0-0001-2E8A-5BF01D60CEF0" statname="Wilcoxon rank-sum/Mann-Whitney" statp="0.0453" stattest="" studyid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" tags="Statistic" title="C94F7496-14E0-0001-3935-1470147D2260" type="text/vnd.tiddlywiki" variableid="C94E0BE1-4360-0001-FCE0-1BB094B0192C">
+<pre>{{||$:/meta/view/statistics}}</pre>
+</div>
 <div created="20210328223524498" modified="20210328223714245" title="Contribute">
 <pre>The database lives in a single html file that is hosted on GitHub. To add new data, you can add your changes to this file and click the red save-icon to the left. Then fork the [[project on GitHub|https://github.com/andjar/CyPreg]] and upload your modified file. As soon as you're ready, you can send a pull request to have your changes merged with the main database.</pre>
 </div>
@@ -14255,7 +14440,7 @@ You can also find a table with all data here: [[$:/meta/view/listlong]].</pre>
 <div created="20210328223010106" modified="20210328233629807" title="Getting started">
 <pre>Welcome to [[CyPreg|https://andjar.github.io/CyPreg/]] -- the Cytokines in Pregnancy initiative. [[Read more|Contribute]] on how to contribute or explore the [[documentation|Documentation]].</pre>
 </div>
-<div created="20210328131438059" currentid="C94F7148-6720-0001-602A-B900F470D6D0" modified="20210402003731504" title="Home">
+<div created="20210328131438059" currentid="C94F7316-99E0-0001-F9BC-1B1019DD3FF0" modified="20210402005819959" title="Home">
 <pre>{{Getting started}}
 
 {{$:/meta/view/save}}
